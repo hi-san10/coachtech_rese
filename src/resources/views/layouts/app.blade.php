@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script src="https://kit.fontawesome.com/9c882e03ff.js" crossorigin="anonymous"></script>
+    @yield('css')
 </head>
 <body>
     <div class="rese">
@@ -28,8 +29,6 @@
                 </ul>
             </div>
         </header>
-    </div>
-    <div class="content">
         @yield('content')
     </div>
 </body>
