@@ -18,7 +18,10 @@
                 <ul>
                     <li><a href="/">ホーム</a></li>
                     <li><a href="/login">ログイン</a></li>
-                    <li>ログアウト</li>
+                    <form action="/logout" method="post">
+                    @csrf
+                    <li><button>ログアウト</button></li>
+                    </form>
                     <li><a href="">予約</a></li>
                     <li><a href="">マイページ</a></li>
                     <li><a href="/register">登録</a></li>
