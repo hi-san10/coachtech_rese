@@ -24,7 +24,7 @@
                     <li><button>ログアウト</button></li>
                     </form>
                     <li><a href="">予約</a></li>
-                    <li><a href="">マイページ</a></li>
+                    <li><a href="{{ route('mypage', ['user_id' => Auth::id()]) }}">マイページ</a></li>
                     <li><a href="/register">登録</a></li>
                 </ul>
             </div>
