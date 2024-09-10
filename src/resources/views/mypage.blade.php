@@ -12,6 +12,12 @@
             <p>予約状況</p>
             @foreach($my_datas as $my_data)
             <div class="rese-mypage__content-confirm--item">
+                <p>予約{{ $number++ }} </p>
+                <form action="{{ route('delete', ['reserv_id' => $my_data->id]) }}" method="post">
+                @method('delete')
+                @csrf
+                <button>×</button>
+                </form>
                 <table>
                     <tr>
                         <th>Shop</th>
@@ -28,10 +34,14 @@
                     <tr>
                         <th>Number</th>
                         <td>{{ $my_data->number_of_people }}</td>
+                        <td>
+
+                        </td>
                     </tr>
                 </table>
             </div>
             @endforeach
+            
         </div>
     </div>
 </div>

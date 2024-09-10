@@ -1,0 +1,19 @@
+.rese {
+    background-color: #f4f4f4;
+}
+
+.modal {
+    visibility: hidden;
+}
+
+.header {
+    display: flex;
+}
+
+.header__inner {
+    width: 30%;
+}
+
+.header__inner-nav {
+    width: 30%;
+}
