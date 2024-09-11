@@ -16,7 +16,14 @@ class MypageController extends Controller
 
         $number = 1;
 
-        return view('mypage', compact('my_datas', 'number'));
+        $restaurants = Restaurant::with('prefecture', 'genre', 'favorite')->get();
+
+        foreach($restaurants as $restaurant)
+        {
+            $restaurant->favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
+        }
+
+        return view('mypage', compact('my_datas', 'number', 'restaurants', 'restaurant'));
     }
 
     public function reservation(Request $request)

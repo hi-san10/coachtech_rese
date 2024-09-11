@@ -34,15 +34,26 @@
                     <tr>
                         <th>Number</th>
                         <td>{{ $my_data->number_of_people }}</td>
-                        <td>
-
-                        </td>
                     </tr>
                 </table>
             </div>
             @endforeach
-            
         </div>
+        @foreach($restaurants as $restaurant)
+        @if($restaurant->favorite)
+        <div class="rese-shop__item">
+            <div class="rese-shop__item-img">
+                <img src="{{ $restaurant->image }}"></img>
+            </div>
+            <div class="rese-shop__item-text">
+                <h3>{{ $restaurant->name }}</h3>
+                <small>#{{ $restaurant->prefecture->name_jp }}</small>
+                <small>#{{ $restaurant->genre->name }}</small>
+                    <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
+            </div>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 @endsection
