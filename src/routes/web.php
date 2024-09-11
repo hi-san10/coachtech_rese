@@ -37,3 +37,5 @@ Route::post('/reservation/{user_id?}/{shop_id}', [MypageController::class, 'rese
 Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypage');
 
 Route::delete('/mypage/delete/{reserv_id}', [MypageController::class, 'delete'])->name('delete');
+
+Route::get('/search', [ShopController::class, 'search']);

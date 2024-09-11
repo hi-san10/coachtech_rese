@@ -14,6 +14,7 @@ class Restaurant extends Model
         'prefecture_id',
         'genre_id',
         'name',
+        'name_of_reading_kana',
         'image',
         'detail'
     ];
@@ -26,5 +27,28 @@ class Restaurant extends Model
     public function genre()
     {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function scopeRestaurantSearch($query, $prefecture_id)
+    {
+        if(!empty($prefecture_id))
+        {
+            $query->where('prefecture_id', $prefecture_id);
+        }
+    }
+
+    public function scopeGenreSearch($query, $genre_id){
+        if(!empty($genre_id))
+        {
+            $query->where('genre_id', $genre_id);
+        }
+    }
+
+    public function scopeNameSearch($query, $name)
+    {
+        if(!empty($name))
+        {
+            $query->where('name', 'like', '%'.$name.'%')->orWhere('name_of_reading_kana', 'like', '%'.$name.'%');
+        }
     }
 }

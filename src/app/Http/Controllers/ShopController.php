@@ -20,4 +20,11 @@ class ShopController extends Controller
         return view('detail', compact('restaurants'));
     }
 
+    public function search(Request $request)
+    {
+        $restaurant = Restaurant::with('prefecture', 'genre')->RestaurantSearch($request->prefecture_id)->GenreSearch($request->genre_id)->NameSearch($request->name)->get();
+
+        return view('shop_all', compact('restaurant'));
+    }
+
 }

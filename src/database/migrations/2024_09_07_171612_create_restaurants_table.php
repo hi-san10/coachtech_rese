@@ -18,6 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->foreignId('prefecture_id')->constrained()->cascadeOnDelete();
             $table->foreignId('genre_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('name_of_reading_kana');
             $table->string('image')->nullable();
             $table->text('detail')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();

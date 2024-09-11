@@ -28,6 +28,7 @@
                     <li><a href="/register">登録</a></li>
                 </ul>
             </div>
+            @yield('link')
         </header>
         @yield('content')
     </div>

@@ -8,6 +8,27 @@
 @endsection
 
 @section('content')
+<div class="header__inner-search">
+    <form action="/search" method="get">
+        @csrf
+        <select name="prefecture_id" id="">
+            <option value="">All area</option>
+            <option value="13">東京都</option>
+            <option value="27">大阪府</option>
+            <option value="40">福岡県</option>
+        </select>
+        <select name="genre_id" id="">
+            <option value="">All genre</option>
+            <option value="1">寿司</option>
+            <option value="2">焼肉</option>
+            <option value="3">居酒屋</option>
+            <option value="4">イタリアン</option>
+            <option value="5">ラーメン</option>
+        </select>
+        <input type="search" name="name" placeholder="Search...">
+        <button>検索</button>
+    </form>
+</div>
 <div class="rese-shop">
     <div class="rese-shop__content">
         @foreach($restaurant as $restaurant)
