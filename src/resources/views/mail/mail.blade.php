@@ -11,7 +11,7 @@
         以下をクリックしてユーザー認証を完了してください</p>
     </div>
     <div class="mail__link">
-        <a href="{{ route('verify', ['name' => $user->name, 'email' => $user->email]) }}">ユーザー認証へ</a>
+        <a href="{{ route('verify', ['email' => $user->email, 'token' => $user->token]) }}">ユーザー認証へ</a>
     </div>
 </div>
 @endsection

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -24,13 +25,16 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        $user = $request;
+        // $user = $request;
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'token' => Str::random(8)
         ]);
+        $user = User::where('email', $request->email)->first();
+        // dd($user);
 
         Mail::to($request->email)->send(new SendMail($user));
 
@@ -39,13 +43,13 @@ class LoginController extends Controller
 
     public function verify(Request $request)
     {
-        $user = User::where('name', $request->name)->where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->where('token', $request->token)->first();
 
         $email_verified_at = $user->email_verified_at;
 
         if(is_null($email_verified_at))
         {
-            User::where('name', $request->name)->where('email', $request->email)->update(['email_verified_at' => CarbonImmutable::today()]);
+            User::where('email', $request->email)->where('token', $request->token)->update(['email_verified_at' => CarbonImmutable::today()]);
 
             return view('thanks');
         }else{

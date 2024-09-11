@@ -24,7 +24,7 @@ Route::get('/register', [LoginController::class, 'register']);
 
 Route::post('/register/store', [LoginController::class, 'store']);
 
-Route::get('verify/{name}/{email}', [LoginController::class, 'verify'])->name('verify');
+Route::get('verify/{email}/{token}', [LoginController::class, 'verify'])->name('verify');
 
 Route::post('/login/login', [LoginController::class, 'login']);
 
