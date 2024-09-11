@@ -31,7 +31,7 @@
 </div>
 <div class="rese-shop">
     <div class="rese-shop__content">
-        @foreach($restaurant as $restaurant)
+        @foreach($restaurants as $restaurant)
         <div class="rese-shop__item">
             <div class="rese-shop__item-img">
                 <img src="{{ $restaurant->image }}"></img>
@@ -41,6 +41,15 @@
                 <small>#{{ $restaurant->prefecture->name_jp }}</small>
                 <small>#{{ $restaurant->genre->name }}</small>
                 <a href="{{ route('detail', ['shop_id' => $restaurant->id]) }}">詳しく見る</a>
+
+                <form action="{{ route('favorite', ['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
+                    @csrf
+                    @if($restaurant->is_favorite)
+                    <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
+                    @else
+                    <button class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
+                    @endif
+                </form>
             </div>
         </div>
         @endforeach

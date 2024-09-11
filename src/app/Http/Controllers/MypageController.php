@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Favorite;
 
 class MypageController extends Controller
 {
@@ -35,6 +36,29 @@ class MypageController extends Controller
     {
         Reservation::find($request->reserv_id)->delete();
         return back();
+    }
+
+    public function favorite(Request $request)
+    {
+        $favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $request->shop_id)->first();
+        if(is_null($favorite))
+        {
+            Favorite::create([
+                'user_id' => Auth::id(),
+                'restaurant_id' => $request->shop_id
+            ]);
+        }else{
+            Favorite::find($favorite->id)->delete();
+        }
+
+        return back();
+    }
+
+    public function un_favorite(Request $request)
+    {
+        $favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $request->shop_id)->first();
+        Favorite::find($favorite->id)->delete();
+        return back('');
     }
 
 }

@@ -16,7 +16,7 @@ use App\Http\Controllers\MypageController;
 |
 */
 
-Route::get('/', [ShopController::class, 'index'])->name('shop_all');
+Route::get('/{shop_id?}', [ShopController::class, 'index'])->name('shop_all');
 
 Route::get('/login', [LoginController::class, 'index']);
 
@@ -39,3 +39,7 @@ Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypa
 Route::delete('/mypage/delete/{reserv_id}', [MypageController::class, 'delete'])->name('delete');
 
 Route::get('/search', [ShopController::class, 'search']);
+
+Route::post('/favorite/{user_id}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
+
+Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
