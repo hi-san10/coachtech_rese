@@ -109,7 +109,7 @@ class RestaurantsTableSeeder extends Seeder
             'genre_id' => '1',
             'name' => '築地色合',
             'name_of_reading_kana' => 'つきじいろあい',
-            'image'  => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg',
+            'image'  => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg',
             'detail' => '鮨好きの方の為の鮨屋として、迫力ある大きさの握りを1貫ずつ提供致します。'
         ];
         DB::table('restaurants')->insert($content);

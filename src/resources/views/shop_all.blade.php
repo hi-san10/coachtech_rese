@@ -10,7 +10,6 @@
 @section('content')
 <div class="header__inner-search">
     <form action="/search" method="get">
-        @csrf
         <select name="prefecture_id" id="">
             <option value="">All area</option>
             <option value="13">東京都</option>

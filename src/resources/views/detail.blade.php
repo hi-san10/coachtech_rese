@@ -8,7 +8,7 @@
 <div class="rese-detail">
     <div class="rese-detail__content">
         <a href="{{ route('shop_all') }}">&lt;</a>
-        <span>仙人</span>
+        <span>{{ $restaurants->name }}</span>
         <img src="{{ $restaurants->image }}" alt="">
         <small>#{{ $restaurants->prefecture->name_jp }}</small>
         <small>#{{ $restaurants->genre->name }}</small>

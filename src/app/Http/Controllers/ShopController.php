@@ -29,9 +29,14 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
-        $restaurant = Restaurant::with('prefecture', 'genre')->RestaurantSearch($request->prefecture_id)->GenreSearch($request->genre_id)->NameSearch($request->name)->get();
+        // dd('k');
+        $restaurants = Restaurant::with('prefecture', 'genre', 'favorite')->RestaurantSearch($request->prefecture_id)->GenreSearch($request->genre_id)->NameSearch($request->name)->get();
+        foreach($restaurants as $restaurant)
+        {
+            $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
+        }
 
-        return view('shop_all', compact('restaurant'));
+        return view('shop_all', compact('restaurants', 'restaurant'));
     }
 
 }

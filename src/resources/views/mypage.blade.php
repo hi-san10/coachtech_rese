@@ -39,6 +39,7 @@
             </div>
             @endforeach
         </div>
+        <h3>お気に入り店舗</h3>
         @foreach($restaurants as $restaurant)
         @if($restaurant->favorite)
         <div class="rese-shop__item">

@@ -20,21 +20,30 @@ class LoginController extends Controller
 
     public function register()
     {
-        return view('register');
+        if(Auth::check())
+        {
+            return redirect('/login');
+        }else{
+            return view('register');
+        }
     }
 
     public function store(Request $request)
     {
-        // $user = $request;
+        do
+        {
+        $token = Str::random(8);
+        $existing_random_str = User::where('token', $token)->first();
+        } while (!is_null($existing_random_str));
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'token' => Str::random(8)
+            'token' => $token
+
         ]);
         $user = User::where('email', $request->email)->first();
-        // dd($user);
 
         Mail::to($request->email)->send(new SendMail($user));
 
@@ -43,13 +52,13 @@ class LoginController extends Controller
 
     public function verify(Request $request)
     {
-        $user = User::where('email', $request->email)->where('token', $request->token)->first();
+        $user = User::where('token', $request->token)->first();
 
         $email_verified_at = $user->email_verified_at;
 
         if(is_null($email_verified_at))
         {
-            User::where('email', $request->email)->where('token', $request->token)->update(['email_verified_at' => CarbonImmutable::today()]);
+            User::where('token', $request->token)->update(['email_verified_at' => CarbonImmutable::today()]);
 
             return view('thanks');
         }else{
