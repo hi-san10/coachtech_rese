@@ -17,13 +17,15 @@ use App\Http\Controllers\MypageController;
 */
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::get('/', [ShopController::class, 'index'])->name('shop_all');
 
     Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypage');
 
     Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 });
+
+Route::get('/', [ShopController::class, 'index'])->name('shop_all');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -42,7 +44,7 @@ Route::post('/reservation/{user_id?}/{shop_id}', [MypageController::class, 'rese
 Route::delete('/mypage/delete/{reserv_id}', [MypageController::class, 'delete'])->name('delete');
 
 
-Route::post('/favorite/{user_id}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
+Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
 
 Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
 

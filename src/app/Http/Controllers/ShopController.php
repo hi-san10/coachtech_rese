@@ -13,12 +13,17 @@ class ShopController extends Controller
     public function index(Request $request)
     {
         $restaurants = Restaurant::with('prefecture', 'genre')->get();
-        // $is_favorite = Favorite::where('user_id', Auth::id())->get();
+        // if(Auth::check())
+        // {
+        
         foreach($restaurants as $restaurant)
         {
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
         return view('shop_all', compact('restaurants', 'restaurant'));
+    // }else{
+    //     return view('shop_all', compact('restaurants'));
+    // }
     }
 
     public function detail(Request $request)
