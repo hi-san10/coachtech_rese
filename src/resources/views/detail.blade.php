@@ -20,14 +20,29 @@
         <div class="rese-detail__reservation-date">
             <h3>予約</h3>
             <input type="date" name="date">
+                <div class="error_message">
+                    @error('date')
+                    <span>{{ $message }}</span>
+                    @enderror
+                </div>
             <select name="time" id=>
                 <option value="11:00">11:00</option>
                 <option value="12:00">12:00</option>
             </select>
+                <div class="error_message">
+                    @error('time')
+                    <span>{{ $message }}</span>
+                    @enderror
+                </div>
             <select name="number" id="">
                 <option value="1">1人</option>
                 <option value="2">2人</option>
             </select>
+                <div class="error_message">
+                    @error('number')
+                    <span>{{ $message }}</span>
+                    @enderror
+                </div>
         </div>
         <div class="rese-detail__reservation-confirm">
             <input type="text">

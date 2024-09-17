@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
+use App\Http\Requests\ReservationRequest;
 
 class MypageController extends Controller
 {
@@ -26,7 +27,7 @@ class MypageController extends Controller
         return view('mypage', compact('my_datas', 'number', 'restaurants', 'restaurant'));
     }
 
-    public function reservation(Request $request)
+    public function reservation(ReservationRequest $request)
     {
         Reservation::create([
             'user_id' => $request->user_id,
