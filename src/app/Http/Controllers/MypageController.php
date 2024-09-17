@@ -61,11 +61,4 @@ class MypageController extends Controller
         return back();
     }
 
-    public function un_favorite(Request $request)
-    {
-        $favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $request->shop_id)->first();
-        Favorite::find($favorite->id)->delete();
-        return back('');
-    }
-
 }

@@ -20,12 +20,12 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypage');
 
-    Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 });
 
 Route::get('/', [ShopController::class, 'index'])->name('shop_all');
 
+Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 

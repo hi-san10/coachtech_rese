@@ -10,6 +10,8 @@ use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -28,7 +30,7 @@ class LoginController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         do
         {
@@ -66,7 +68,7 @@ class LoginController extends Controller
         }
     }
 
-        public function login(Request $request)
+        public function login(LoginRequest $request)
         {
             $email = $request->email;
             $user = User::where('email', $email)->first();
