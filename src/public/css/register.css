@@ -1,0 +1,11 @@
+input {
+    padding-left: 10px;
+    border-bottom: solid gray 0.5px;
+    padding-left: 0px;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.register-item__button {
+    text-align: right;
+}
