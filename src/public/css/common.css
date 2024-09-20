@@ -82,6 +82,7 @@
 .login__button-item,
 .register__button-item {
     font-size: 12px;
+    line-height: 24px;
 }
 
 .login__form,

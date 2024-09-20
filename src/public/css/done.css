@@ -1,0 +1,42 @@
+.done {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.done-content {
+    background-color: white;
+    width: 30%;
+    height: 40%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px gray;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+.done-content p {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.done-content__link {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.done-content__link a {
+    background-color: blue;
+    border-radius: 5px;
+    text-decoration: none;
+    display: block;
+    width: 15%;
+}
+
+.done-content__link span {
+    color: white;
+    font-size: 12px;
+    line-height: 24px;
+}
