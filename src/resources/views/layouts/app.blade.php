@@ -12,20 +12,35 @@
 <body>
     <div class="rese">
         <header class="header">
+            @if(Auth::check())
             <div class="header__inner">
-                <a href="#" class="fa-solid fa-square-poll-horizontal fa-2xl" style="color: #005af5;"></a>
+                <a href="#menu1" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
+                <h3 class="title">Rese</h3>
             </div>
-            <div class="header__inner-nav">
-                <ul>
-                    <li><a href="/">ホーム</a></li>
-                    <li><a href="/login">ログイン</a></li>
+            @else
+            <div class="header__inner">
+                <a href="#menu2" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
+                <h3 class="title">Rese</h3>
+            </div>
+            @endif
+            <div class="header__inner-menu" id="menu1">
+                <a href="#" class="close-btn">×</a>
+                <div class="menu__content">
+                    <a class="menu__content-link" href="/">Home</a>
                     <form action="/logout" method="post">
                     @csrf
-                    <li><button>ログアウト</button></li>
+                    <p class="menu__content-btn"><button>Logout</button></p>
                     </form>
-                    <li><a href="{{ route('mypage', ['user_id' => Auth::id()]) }}">マイページ</a></li>
-                    <li><a href="/register">登録</a></li>
-                </ul>
+                    <a class="menu__content-link" href="{{ route('mypage', ['user_id' => Auth::id()]) }}">Mypage</a>
+                </div>
+            </div>
+            <div class="header__inner-menu" id="menu2">
+                <a href="#" class="close-btn">×</a>
+                <div class="menu__content">
+                    <a class="menu__content-link" href="/">Home</a>
+                    <a class="menu__content-link menu__content-btn" href="/register">Registration</a>
+                    <a class="menu__content-link" href="/login">Login</a>
+                </div>
             </div>
             @yield('link')
         </header>

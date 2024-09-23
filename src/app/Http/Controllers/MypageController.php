@@ -18,10 +18,9 @@ class MypageController extends Controller
         $number = 1;
 
         $restaurants = Restaurant::with('prefecture', 'genre', 'favorite')->get();
-
         foreach($restaurants as $restaurant)
         {
-            $restaurant->favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
+            $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
 
         return view('mypage', compact('my_datas', 'number', 'restaurants', 'restaurant'));
@@ -58,6 +57,13 @@ class MypageController extends Controller
         }else{
             Favorite::find($favorite->id)->delete();
         }
+
+        return back();
+    }
+
+    public function update(Request $request)
+    {
+        Reservation::where('user_id', Auth::id())->where('restaurant_id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
 
         return back();
     }

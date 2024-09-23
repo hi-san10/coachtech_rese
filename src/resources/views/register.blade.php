@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="rese-content">
-    <div class="login register">
-        <p>Registration</p>
-        <form action="/register/store" method="post">
+    <div class="register">
+        <p class="register__text"><span class="register__text-item">Registration</span></p>
+        <form class="register__form" action="/register/store" method="post">
             @csrf
-            <div class="login-item">
+            <div class="register-item">
                 <i class="fa-solid fa-user"></i>
                 <input type="text" name="name" placeholder="Username">
                 <div class="error_message">
@@ -19,7 +19,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="login-item">
+            <div class="register-item">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email">
                 <div class="error_message">
@@ -28,7 +28,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="login-item">
+            <div class="register-item">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" placeholder="Password">
                 <div class="error_message">
@@ -37,7 +37,9 @@
                     @enderror
                 </div>
             </div>
-            <button>登録</button>
+            <div class="register-item__button">
+                <button class="register__button"><span class="register__button-item">登録</span></button>
+            </div>
         </form>
     </div>
 </div>

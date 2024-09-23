@@ -49,3 +49,15 @@ Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorit
 Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
 
 Route::get('/search', [ShopController::class, 'search'])->name('search');
+
+Route::get('/d', function()
+{
+    return view('done');
+});
+
+Route::get('/t', function()
+{
+    return view('thanks');
+});
+
+Route::patch('/mypage/update/{id}', [MypageController::class, 'update'])->name('update');

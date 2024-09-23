@@ -5,18 +5,17 @@
 @endsection
 
 @section('link')
-@endsection
-
-@section('content')
 <div class="header__inner-search">
     <form action="/search" method="get">
-        <select name="prefecture_id" id="">
+        <select class="search__title" name="prefecture_id" id="">
             <option value="">All area</option>
             <option value="13">東京都</option>
             <option value="27">大阪府</option>
             <option value="40">福岡県</option>
         </select>
-        <select name="genre_id" id="">
+        <i class="fa-solid fa-caret-up fa-rotate-180 fa-sm" style="color: #cacfd8;"></i>
+        <span class="ab"></span>
+        <select class="search__title" name="genre_id" id="">
             <option value="">All genre</option>
             <option value="1">寿司</option>
             <option value="2">焼肉</option>
@@ -25,9 +24,11 @@
             <option value="5">ラーメン</option>
         </select>
         <input type="search" name="name" placeholder="Search...">
-        <button>検索</button>
     </form>
 </div>
+@endsection
+
+@section('content')
 <div class="rese-shop">
     <div class="rese-shop__content">
         @foreach($restaurants as $restaurant)
@@ -36,22 +37,25 @@
                 <img src="{{ $restaurant->image }}"></img>
             </div>
             <div class="rese-shop__item-text">
-                <h3>{{ $restaurant->name }}</h3>
-                <small>#{{ $restaurant->prefecture->name_jp }}</small>
-                <small>#{{ $restaurant->genre->name }}</small>
-                <a href="{{ route('detail', ['shop_id' => $restaurant->id]) }}">詳しく見る</a>
-                @if(Auth::check())
-                    <form action="{{ route('favorite', ['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
-                    @csrf
-                    @if($restaurant->is_favorite)
-                    <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
+                <h3 class="shop__item-text">{{ $restaurant->name }}</h3>
+                <small class="shop__item-text">#{{ $restaurant->prefecture->name_jp }}</small>
+                <small class="shop__item-text">#{{ $restaurant->genre->name }}</small><br>
+                <div class="rese-shop__item-detail">
+                    <div class="rese-shop__link">
+                        <a href="{{ route('detail', ['shop_id' => $restaurant->id]) }}"><span>詳しく見る</span></a>
+                    </div>
+                    @if(Auth::check())
+                        <form action="{{ route('favorite', ['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
+                        @csrf
+                        @if($restaurant->is_favorite)
+                        <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
+                        @else
+                        <button class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
+                        @endif
                     @else
-                    <button class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
                     @endif
-                @else
-                    <button disabled class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
-                @endif
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
         @endforeach

@@ -6,9 +6,9 @@
 
 @section('content')
 <div class="rese-content">
-    <div class="login register">
-        <p>Login</p>
-        <form action="/login/login" method="post">
+    <div class="login">
+        <p class="login__text"><span class="login__text-item">Login</span></p>
+        <form class="login__form" action="/login/login" method="post">
             @csrf
             <div class="login-item">
                 <i class="fa-solid fa-envelope"></i>
@@ -28,7 +28,9 @@
                     @enderror
                 </div>
             </div>
-            <button>ログイン</button>
+            <div class="login-item__button">
+                <button class="login__button"><span class="login__button-item">ログイン</span></button>
+            </div>
         </form>
     </div>
 </div>
