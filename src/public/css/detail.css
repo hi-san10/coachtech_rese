@@ -1,0 +1,128 @@
+.rese-detail {
+    height: 90vh;
+}
+
+.rese-detail__content {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.rese-detail__content-inner {
+    width: 50%;
+}
+
+.inner__shop-name {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.inner__shop-name a {
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px gray;
+    color: black;
+    font-weight: bold;
+}
+
+.inner__shop-name h2 {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.shop__img {
+    width: 100%;
+}
+
+.inner__pre-genre {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.inner__pre-genre small {
+    font-size: 15px;
+}
+
+.inner__pre-genre small:first-child {
+    margin-right: 5px;
+}
+
+.rese-detail__reservation {
+    background-color: #0560f2;
+    width: 40%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px gray;
+    position: absolute;
+    top: -50px;
+    left: 760px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reservation__text {
+    display: flex;
+    align-items: center;
+    height: 15%;
+}
+
+.reservation__text h2 {
+    color: white;
+    margin-left: 30px;
+}
+
+.form__inner {
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-left: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.form__inner:first-of-type {
+    width: 30%;
+}
+
+.form__inner:nth-child(n+2) {
+    width: 85%;
+    margin-top: 15px;
+}
+
+.error__message {
+    color: red;
+    margin: 5px 0 0 30px;
+}
+
+.rese-detail__reservation-confirm {
+    background-color: #4087f7;
+    height: 150px;
+    width: 80%;
+    margin: 20px 0 0 30px;
+    border-radius: 5px;
+}
+
+/* confirmの中身 */
+
+.form__btn {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    border-radius: 0 0 5px 5px;
+}

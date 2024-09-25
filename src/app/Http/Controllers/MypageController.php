@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
 use App\Http\Requests\ReservationRequest;
+use Carbon\CarbonImmutable;
 
 class MypageController extends Controller
 {
@@ -15,6 +16,7 @@ class MypageController extends Controller
     {
         $my_datas = Reservation::with('restaurant')->where('user_id', $request->user_id)->get();
 
+        $current = CarbonImmutable::today()->format('Y-m-d');
         $number = 1;
 
         $restaurants = Restaurant::with('prefecture', 'genre', 'favorite')->get();
@@ -23,7 +25,7 @@ class MypageController extends Controller
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
 
-        return view('mypage', compact('my_datas', 'number', 'restaurants', 'restaurant'));
+        return view('mypage', compact('my_datas', 'current', 'number', 'restaurants', 'restaurant'));
     }
 
     public function reservation(ReservationRequest $request)

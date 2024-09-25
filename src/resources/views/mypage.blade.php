@@ -37,13 +37,12 @@
                             </tr>
                             <tr>
                                 <th>Date</th>
-                                <td><input class="change" type="date" name="date" value="{{ $my_data->date }}" min="{{$my_data->date }}"></td>
+                                <td><input class="change" type="date" name="date" value="{{ $my_data->date }}" min="{{ $current }}"></td>
                             </tr>
                             <tr>
                                 <th>Time</th>
                                 <td><select class="change" name="time" id="">
-                                    <option value="">{{ substr($my_data->time, 0, 5) }}</option>
-                                    <option value="{{ $my_data->time }}">変更なし</option>
+                                    <option value="{{ $my_data->time }}">{{ substr($my_data->time, 0, 5) }}</option>
                                     <option value="11:00">11:00</option>
                                     <option value="12:00
                                     ">12:00</option>
@@ -60,8 +59,7 @@
                                 <th>Number</th>
                                 <td>
                                     <select class="change" name="number" id="number">
-                                        <option value="">{{ $my_data->number_of_people }}人</option>
-                                        <option value="{{ $my_data->number_of_people }}">変更なし</option>
+                                        <option value="{{ $my_data->number_of_people }}">{{ $my_data->number_of_people }}人</option>
                                         <option value="1">1人</option>
                                         <option value="2">2人</option>
                                         <option value="3">3人</option>

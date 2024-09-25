@@ -40,7 +40,7 @@ class RestaurantsTableSeeder extends Seeder
             'name' => '戦慄',
             'name_of_reading_kana' => 'せんりつ',
             'image' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg',
-            'detail' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg'
+            'detail' => '気軽に立ち寄れる昔懐かしの大衆居酒屋です。キンキンに冷えたビールを、なんと199円で。鳥かわ煮込み串は販売総数100000本突破の名物料理です。仕事帰りに是非御来店ください。'
         ];
         DB::table('restaurants')->insert($content);
 
