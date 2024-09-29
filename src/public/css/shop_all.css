@@ -85,12 +85,22 @@
     width: 40%;
 }
 
+.header__inner-search input {
+    width: 330px;
+}
+
 .search__title {
     border-right: 0.5px solid gray;
-    padding-right: 30px;
+    padding-right: 5px;
+    padding-left: 10px;
 }
 
 .ab {
     border-right: 0.5px solid gray;
-    
+}
+
+.san {
+    width: 200%;
+    background-color: black;
+    display: inline-block;
 }

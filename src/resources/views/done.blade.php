@@ -15,4 +15,14 @@
         </div>
     </div>
 </div>
+@foreach($restaurants as $restaurant)
+<p>{{$restaurant->name}}</p>
+@foreach($users as $user)
+@if($user->restaurant_id = $restaurant->id)
+                        <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
+                        @else
+                        <button class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
+                        @endif
+@endforeach
+@endforeach
 @endsection

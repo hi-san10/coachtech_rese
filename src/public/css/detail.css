@@ -100,6 +100,10 @@
     margin-top: 15px;
 }
 
+.form__inner select {
+    width: 100%;
+}
+
 .error__message {
     color: red;
     margin: 5px 0 0 30px;

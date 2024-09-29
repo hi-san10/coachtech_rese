@@ -28,7 +28,8 @@
                 @csrf
             <div class="rese-detail__reservation-form">
                 <div class="form__inner date">
-                    <input type="date" name="date" min="{{ $current }}">
+                    <label for="date">
+                    <input type="date" name="date" min="{{ $current }}"></label>
                 </div>
                 <div class="error__message">
                     @error('date')

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script src="https://kit.fontawesome.com/9c882e03ff.js" crossorigin="anonymous"></script>
     @yield('css')
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <div class="rese">

@@ -8,22 +8,22 @@
 <div class="header__inner-search">
     <form action="/search" method="get">
         <select class="search__title" name="prefecture_id" id="">
-            <option value="">All area</option>
+
+            <option value="">All area　▽                    <i class="fa-solid fa-caret-up fa-rotate-180 fa-sm" style="color: #cacfd8;"></i>
+</option>
             <option value="13">東京都</option>
             <option value="27">大阪府</option>
             <option value="40">福岡県</option>
         </select>
-        <i class="fa-solid fa-caret-up fa-rotate-180 fa-sm" style="color: #cacfd8;"></i>
-        <span class="ab"></span>
         <select class="search__title" name="genre_id" id="">
-            <option value="">All genre</option>
+            <option value="">All genre　▽</option>
             <option value="1">寿司</option>
             <option value="2">焼肉</option>
             <option value="3">居酒屋</option>
             <option value="4">イタリアン</option>
             <option value="5">ラーメン</option>
         </select>
-        <input type="search" name="name" placeholder="Search...">
+        <input type="search" name="name" placeholder="🔍　Search...">
     </form>
 </div>
 @endsection

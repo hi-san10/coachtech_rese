@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Reservation;
 use App\Models\Favorite;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\CarbonImmutable;
 
@@ -40,6 +41,14 @@ class ShopController extends Controller
         }
 
         return view('shop_all', compact('restaurants', 'restaurant'));
+    }
+
+    public function d()
+    {
+        $restaurants = Restaurant::all();
+        $users = User::join('favorites', 'users.id', '=', 'favorites.user_id')->where('user_id', Auth::id())->get();
+
+        return view('done', compact('users', 'restaurants'));
     }
 
 }

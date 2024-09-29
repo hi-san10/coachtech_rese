@@ -50,10 +50,7 @@ Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_f
 
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 
-Route::get('/d', function()
-{
-    return view('done');
-});
+Route::get('/d', [ShopController::class, 'd']);
 
 Route::get('/t', function()
 {

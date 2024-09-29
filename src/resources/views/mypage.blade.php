@@ -23,7 +23,7 @@
                             <form action="{{ route('delete', ['reserv_id' => $my_data->id]) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button>×</button>
+                                <button onclick='return confirm("本当に削除しますか？")'>×</button>
                             </form>
                         </div>
                     </div>
