@@ -27,12 +27,13 @@
 .login,
 .register {
     width: 30%;
-    height: 25%;
     position: absolute;
     top: 20%;
     left: 35%;
     box-shadow: 1px 1px 5px gray;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .login__text,
@@ -55,12 +56,19 @@
     height: 35%;
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 .register-item {
     height: 26%;
     display: flex;
     align-items: center;
+    margin-top: 10px;
+}
+
+.error_message span {
+    color: red;
+    margin-left: 38px;
 }
 
 .login__button,
@@ -71,6 +79,7 @@
     border-radius: 5px;
     width: 80px;
     margin-right: 10%;
+    margin-bottom: 10px;
 }
 
 .login__button-item,

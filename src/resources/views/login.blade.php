@@ -13,20 +13,20 @@
             <div class="login-item">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email">
-                <div class="error_message">
-                    @error('email')
-                    <span>{{ $message }}</span>
-                    @enderror
-                </div>
+            </div>
+            <div class="error_message">
+                @error('email')
+                <span>{{ $message }}</span>
+                @enderror
             </div>
             <div class="login-item">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" placeholder="Password">
-                <div class="error_message">
-                    @error('password')
-                    <span>{{ $message }}</span>
-                    @enderror
-                </div>
+            </div>
+            <div class="error_message">
+                @error('password')
+                <span>{{ $message }}</span>
+                @enderror
             </div>
             <div class="login-item__button">
                 <button class="login__button"><span class="login__button-item">ログイン</span></button>
