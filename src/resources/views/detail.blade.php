@@ -10,7 +10,7 @@
         <div class="rese-detail__content-inner">
             <div class="inner__shop-name">
                 <a href="{{ route('shop_all') }}">&lt;</a>
-                <h2>{{ $restaurants->name }}</h2>
+                <h2 id="shop_name">{{ $restaurants->name }}</h2>
             </div>
             <img class="shop__img" src="{{ $restaurants->image }}" alt="">
             <div class="inner__pre-genre">
@@ -29,7 +29,7 @@
             <div class="rese-detail__reservation-form">
                 <div class="form__inner date">
                     <label for="date">
-                    <input type="date" name="date" min="{{ $current }}"></label>
+                    <input id="rese_date" type="date" name="date" min="{{ $current }}"></label>
                 </div>
                 <div class="error__message">
                     @error('date')
@@ -37,7 +37,7 @@
                     @enderror
                 </div>
                 <div class="form__inner time">
-                    <select name="time" id=>
+                    <select name="time" id="rese_time">
                         <option value="">時間</option>
                         <option value="11:00">11:00</option>
                         <option value="12:00">12:00</option>
@@ -56,7 +56,7 @@
                     @enderror
                 </div>
                 <div class="form__inner number">
-                    <select name="number" id="">
+                    <select name="number" id="rese_number">
                         <option value="">人数</option>
                         <option value="1">1人</option>
                         <option value="2">2人</option>
@@ -74,7 +74,24 @@
             </div>
             </form>
             <div  class="rese-detail__reservation-confirm">
-                <input type="text">
+                <table>
+                    <tr>
+                        <th>Shop</th>
+                        <td id="name"></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td id="date"></td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td id="time"></td>
+                    </tr>
+                    <tr>
+                        <th>Number</th>
+                        <td id="number"></td>
+                    </tr>
+                </table>
             </div>
             <div class="form__btn">
                 <button form="reservation">予約する</button>

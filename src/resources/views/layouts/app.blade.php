@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script src="https://kit.fontawesome.com/9c882e03ff.js" crossorigin="anonymous"></script>
     @yield('css')
-    <script src="js/script.js" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
 </head>
 <body>
     <div class="rese">
@@ -16,12 +16,12 @@
             @if(Auth::check())
             <div class="header__inner">
                 <a href="#menu1" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
-                <h3 class="title">Rese</h3>
+                <h3 class="title" id="title">Rese</h3>
             </div>
             @else
             <div class="header__inner">
                 <a href="#menu2" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
-                <h3 class="title">Rese</h3>
+                <h3 class="title" id="title">Rese</h3>
             </div>
             @endif
             <div class="header__inner-menu" id="menu1">
