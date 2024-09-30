@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,12 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypage');
 
+    Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 });
 
 Route::get('/', [ShopController::class, 'index'])->name('shop_all');
 
-Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -39,9 +40,9 @@ Route::post('/login/login', [LoginController::class, 'login']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::post('/reservation/{user_id?}/{shop_id}', [MypageController::class, 'reservation'])->name('reservation');
+Route::post('/reservation/{user_id?}/{shop_id}', [ReservationController::class, 'reservation'])->name('reservation');
 
-Route::delete('/mypage/delete/{reserv_id}', [MypageController::class, 'delete'])->name('delete');
+Route::delete('/mypage/delete/{reserv_id}', [ReservationController::class, 'delete'])->name('delete');
 
 
 Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
@@ -52,9 +53,4 @@ Route::get('/search', [ShopController::class, 'search'])->name('search');
 
 Route::get('/d', [ShopController::class, 'd']);
 
-Route::get('/t', function()
-{
-    return view('thanks');
-});
-
-Route::patch('/mypage/update/{id}', [MypageController::class, 'update'])->name('update');
+Route::patch('/mypage/update/{id}', [ReservationController::class, 'update'])->name('update');

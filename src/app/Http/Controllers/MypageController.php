@@ -7,7 +7,6 @@ use App\Models\Restaurant;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
-use App\Http\Requests\ReservationRequest;
 use Carbon\CarbonImmutable;
 
 class MypageController extends Controller
@@ -28,24 +27,7 @@ class MypageController extends Controller
         return view('mypage', compact('my_datas', 'current', 'number', 'restaurants', 'restaurant'));
     }
 
-    public function reservation(ReservationRequest $request)
-    {
-        Reservation::create([
-            'user_id' => $request->user_id,
-            'restaurant_id' => $request->shop_id,
-            'date' => $request->date,
-            'time' => $request->time,
-            'number_of_people' => $request->number,
-        ]);
 
-        return view('done');
-    }
-
-    public function delete(Request $request)
-    {
-        Reservation::find($request->reserv_id)->delete();
-        return back();
-    }
 
     public function favorite(Request $request)
     {
@@ -63,11 +45,5 @@ class MypageController extends Controller
         return back();
     }
 
-    public function update(Request $request)
-    {
-        Reservation::where('user_id', Auth::id())->where('restaurant_id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
-
-        return back();
-    }
 
 }
