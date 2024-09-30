@@ -29,7 +29,7 @@
             <div class="rese-detail__reservation-form">
                 <div class="form__inner date">
                     <label for="date">
-                    <input id="rese_date" type="date" name="date" min="{{ $current }}"></label>
+                    <input id="rese_date" type="date" name="date" min="{{ $current }}" onchange="dateChange()"></label>
                 </div>
                 <div class="error__message">
                     @error('date')
@@ -37,7 +37,7 @@
                     @enderror
                 </div>
                 <div class="form__inner time">
-                    <select name="time" id="rese_time">
+                    <select name="time" id="rese_time" onchange="timeChange()">
                         <option value="">時間</option>
                         <option value="11:00">11:00</option>
                         <option value="12:00">12:00</option>
@@ -56,7 +56,7 @@
                     @enderror
                 </div>
                 <div class="form__inner number">
-                    <select name="number" id="rese_number">
+                    <select name="number" id="rese_number" onchange="numberChange()">
                         <option value="">人数</option>
                         <option value="1">1人</option>
                         <option value="2">2人</option>
