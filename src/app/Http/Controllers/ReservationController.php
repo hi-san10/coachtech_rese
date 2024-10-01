@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use Carbon\CarbonImmutable;
 
 class ReservationController extends Controller
 {
@@ -21,6 +24,17 @@ class ReservationController extends Controller
         return view('done');
     }
 
+    public function changeform(Request $request)
+    {
+        $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->where('restaurant_id', $request->id)->where('id', $request->reserv_id)->first();
+
+        $name = $request->name;
+
+        $current = CarbonImmutable::today()->format('Y-m-d');
+
+        return view('reservationChange', compact('my_datas', 'name', 'current'));
+    }
+
     public function delete(Request $request)
     {
         Reservation::find($request->reserv_id)->delete();
@@ -29,9 +43,9 @@ class ReservationController extends Controller
 
     public function update(Request $request)
     {
-        Reservation::where('user_id', Auth::id())->where('restaurant_id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
+        Reservation::where('id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
 
-        return back();
+        return redirect(route('mypage'));
     }
 
 }

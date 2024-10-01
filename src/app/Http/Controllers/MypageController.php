@@ -13,7 +13,7 @@ class MypageController extends Controller
 {
     public function index(Request $request)
     {
-        $my_datas = Reservation::with('restaurant')->where('user_id', $request->user_id)->get();
+        $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->get();
 
         $current = CarbonImmutable::today()->format('Y-m-d');
         $number = 1;

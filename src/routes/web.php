@@ -19,7 +19,7 @@ use App\Http\Controllers\ReservationController;
 Route::group(['middleware' => 'auth'], function()
 {
 
-    Route::get('/mypage/{user_id?}', [MypageController::class, 'index'])->name('mypage');
+    Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
 
     Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
@@ -53,4 +53,6 @@ Route::get('/search', [ShopController::class, 'search'])->name('search');
 
 Route::get('/d', [ShopController::class, 'd']);
 
-Route::patch('/mypage/update/{id}', [ReservationController::class, 'update'])->name('update');
+Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
+
+Route::post('/mypage/change/{id}/{name}/{reserv_id}', [ReservationController::class, 'changeform'])->name('changeform');

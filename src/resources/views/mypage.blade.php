@@ -27,8 +27,7 @@
                             </form>
                         </div>
                     </div>
-                    <form action="{{ route('update', ['id' => $my_data->restaurant_id]) }}" method="post">
-                        @method('patch')
+                    <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reserv_id' => $my_data->id]) }}" method="post">
                         @csrf
                         <table>
                             <tr>
@@ -37,41 +36,22 @@
                             </tr>
                             <tr>
                                 <th>Date</th>
-                                <td><input class="change" type="date" name="date" value="{{ $my_data->date }}" min="{{ $current }}"></td>
+                                <td>{{ $my_data->date }}</td>
                             </tr>
                             <tr>
                                 <th>Time</th>
-                                <td><select class="change" name="time" id="">
-                                    <option value="{{ $my_data->time }}">{{ substr($my_data->time, 0, 5) }}</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="12:00
-                                    ">12:00</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="16:00">16:00</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="19:00">19:00</option>
-                                </select></td>
+                                <td>{{ substr($my_data->time, 0, 5) }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>Number</th>
-                                <td>
-                                    <select class="change" name="number" id="number">
-                                        <option value="{{ $my_data->number_of_people }}">{{ $my_data->number_of_people }}人</option>
-                                        <option value="1">1人</option>
-                                        <option value="2">2人</option>
-                                        <option value="3">3人</option>
-                                        <option value="4">4人</option>
-                                        <option value="5">5人</option>
-                                        <option value="6">6人</option>
-                                    </select>
+                                <td>{{ $my_data->number_of_people }}人
                                 </td>
-                                <td><button>変更する</button></td>
+                                <td>
+                                    <button>変更する</button>
+                                </td>
                             </tr>
                         </table>
-
                     </form>
                 </div>
                 @endforeach

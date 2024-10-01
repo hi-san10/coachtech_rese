@@ -32,7 +32,7 @@
                     @csrf
                     <p class="menu__content-btn"><button>Logout</button></p>
                     </form>
-                    <a class="menu__content-link" href="{{ route('mypage', ['user_id' => Auth::id()]) }}">Mypage</a>
+                    <a class="menu__content-link" href="{{ route('mypage') }}">Mypage</a>
                 </div>
             </div>
             <div class="header__inner-menu" id="menu2">
