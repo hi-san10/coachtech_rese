@@ -14,6 +14,16 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
+        // $yesterday = CarbonImmutable::yesterday();
+        // $users = Reservation::with('user')->whereDate('date', $yesterday)->get();
+        // dd($users);
+        // $data = [];
+        // foreach($users as $user)
+        // {
+        //     $data[] = $user;
+        //     dd(var_dump($user));
+        //     return Mail::to($user->user->email)->send(new Reminder($user));
+        // }
         $restaurants = Restaurant::with('prefecture', 'genre')->get();
 
         foreach($restaurants as $restaurant)
@@ -47,6 +57,7 @@ class ShopController extends Controller
     {
         $restaurants = Restaurant::all();
         $users = User::join('favorites', 'users.id', '=', 'favorites.user_id')->where('user_id', Auth::id())->get();
+        // dd($users);
 
         return view('done', compact('users', 'restaurants'));
     }
