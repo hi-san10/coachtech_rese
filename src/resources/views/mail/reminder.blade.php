@@ -1,7 +1,18 @@
-{{ $reservation->id}}
+@extends('layouts/app')
 
-{予約者名}様
-{レストラン名}の予約が1日前となりました。
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/reminder.css') }}">
+@endsection
 
-【予約内容】
-{予約内容}
+@section('content')
+<div class="rese_container">
+    <div class="rese_reservation-confirm">
+        <h3>{{ $reservation->user->name }}様</h3>
+        <p>{{ $reservation->restaurant->name }}の予約当日となりました</p>
+        <h4>[予約内容]</h4>
+        <p>{{ $reservation->date }}</p>
+        <p>{{ substr($reservation->time, 0, 5) }}</p>
+        <p>{{ $reservation->number_of_people}}人</p>
+    </div>
+</div>
+@endsection

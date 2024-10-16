@@ -43,12 +43,13 @@ class ReminderMail extends Command
     public function handle()
     {
         \Log::info('k');
-        // $yesterday = CarbonImmutable::yesterday();
-        // $reservations = Reservation::with('user')->whereDate('date', $yesterday)->get();
 
-        // foreach($reservations as $reservation)
-        // {
-        //     Mail::to($reservation->user->email)->send(new Reminder($reservation));
-        // }
+        $current = CarbonImmutable::today();
+        $reservations = Reservation::with('user', 'restaurant')->whereDate('date', $current)->get();
+
+        foreach($reservations as $reservation)
+        {
+            Mail::to($reservation->user->email)->send(new Reminder($reservation));
+        }
     }
 }
