@@ -56,3 +56,5 @@ Route::get('/d', [ShopController::class, 'd']);
 Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
 
 Route::post('/mypage/change/{id}/{name}/{reserv_id}', [ReservationController::class, 'changeform'])->name('changeform');
+
+Route::get('reviewpage', [ShopController::class, 'reviewpage']);

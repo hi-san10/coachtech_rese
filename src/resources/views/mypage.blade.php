@@ -48,7 +48,11 @@
                                 <td>{{ $my_data->number_of_people }}人
                                 </td>
                                 <td>
+                                    @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
                                     <button>変更する</button>
+                                    @else
+                                    <a class="review_btn"  href="reviewpage">評価する</a>
+                                    @endif
                                 </td>
                             </tr>
                         </table>

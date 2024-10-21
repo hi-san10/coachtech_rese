@@ -15,6 +15,13 @@ class MypageController extends Controller
     {
         $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->get();
 
+        // foreach($my_datas as $my_data)
+        // {
+        //     $current = $my_data->date;
+        //     $tomorrow = date('Y-m-d', strtotime($current . '+1 day', time()));
+        // }
+        // // dd($tomorrow);
+
         $current = CarbonImmutable::today()->format('Y-m-d');
         $number = 1;
 

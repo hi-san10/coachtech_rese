@@ -62,4 +62,9 @@ class ShopController extends Controller
         return view('done', compact('users', 'restaurants'));
     }
 
+    public function reviewpage()
+    {
+        return view('review');
+    }
+
 }
