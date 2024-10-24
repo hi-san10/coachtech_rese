@@ -1,0 +1,66 @@
+.review-container {
+    height: 90vh;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-content {
+    background-color: blue;
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 5px;
+}
+
+.review-content__review {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop_name {
+    color: white;
+    margin: 0 auto 5% auto;
+}
+
+.review-content__review p {
+    color: white;
+    margin: auto;
+}
+
+.review_point {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.review-content__review label {
+    color: white;
+}
+
+.review-content__comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-content__comment textarea {
+    background-color: white;
+    width: 80%;
+    margin: 2% auto 0 auto;
+    border-radius: 5px;
+}
+
+.review-content__comment label {
+    color: white;
+    margin: 5% auto 0 auto;
+}
+
+.review_btn {
+    color: white;
+    display: block;
+    margin: 5% auto 0 auto;
+}

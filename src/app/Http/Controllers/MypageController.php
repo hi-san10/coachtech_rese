@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Reservation;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
 use Carbon\CarbonImmutable;
@@ -14,13 +15,10 @@ class MypageController extends Controller
     public function index(Request $request)
     {
         $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->get();
-
-        // foreach($my_datas as $my_data)
-        // {
-        //     $current = $my_data->date;
-        //     $tomorrow = date('Y-m-d', strtotime($current . '+1 day', time()));
-        // }
-        // // dd($tomorrow);
+        foreach($my_datas as $my_data)
+        {
+            $my_data->is_review = Review::where('reservation_id', $my_data->id)->exists();
+        }
 
         $current = CarbonImmutable::today()->format('Y-m-d');
         $number = 1;

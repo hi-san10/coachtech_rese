@@ -5,6 +5,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +58,8 @@ Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'updat
 
 Route::post('/mypage/change/{id}/{name}/{reserv_id}', [ReservationController::class, 'changeform'])->name('changeform');
 
-Route::get('reviewpage', [ShopController::class, 'reviewpage']);
+Route::get('reviewpage/{reservation_id}/{shop_name}', [ReviewController::class, 'index'])->name('reviewpage');
+
+Route::post('review', [ReviewController::class, 'review']);
+
+Route::get('reviwconfirm/{reservation_id}/{shop_name}', [ReviewController::class, 'reviewconfirm'])->name('reviewconfirm');

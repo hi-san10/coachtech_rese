@@ -14,16 +14,6 @@ class ShopController extends Controller
 {
     public function index(Request $request)
     {
-        // $yesterday = CarbonImmutable::yesterday();
-        // $users = Reservation::with('user')->whereDate('date', $yesterday)->get();
-        // dd($users);
-        // $data = [];
-        // foreach($users as $user)
-        // {
-        //     $data[] = $user;
-        //     dd(var_dump($user));
-        //     return Mail::to($user->user->email)->send(new Reminder($user));
-        // }
         $restaurants = Restaurant::with('prefecture', 'genre')->get();
 
         foreach($restaurants as $restaurant)
@@ -61,10 +51,4 @@ class ShopController extends Controller
 
         return view('done', compact('users', 'restaurants'));
     }
-
-    public function reviewpage()
-    {
-        return view('review');
-    }
-
 }

@@ -50,8 +50,10 @@
                                 <td>
                                     @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
                                     <button>変更する</button>
+                                    @elseif($my_data->is_review)
+                                    <a class="review_btn" href="{{ route('reviewconfirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
                                     @else
-                                    <a class="review_btn"  href="reviewpage">評価する</a>
+                                    <a class="review_btn"  href="{{ route('reviewpage', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
                                     @endif
                                 </td>
                             </tr>
