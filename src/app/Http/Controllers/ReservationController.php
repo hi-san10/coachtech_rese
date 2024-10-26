@@ -26,7 +26,7 @@ class ReservationController extends Controller
 
     public function changeform(Request $request)
     {
-        $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->where('restaurant_id', $request->id)->where('id', $request->reserv_id)->first();
+        $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->where('restaurant_id', $request->id)->where('id', $request->reservation_id)->first();
 
         $name = $request->name;
 
@@ -37,7 +37,7 @@ class ReservationController extends Controller
 
     public function delete(Request $request)
     {
-        Reservation::find($request->reserv_id)->delete();
+        Reservation::find($request->reservation_id)->delete();
         return back();
     }
 

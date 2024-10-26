@@ -17,17 +17,17 @@
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
                             <span>🕙</span>
-                            <p>予約{{ $number++ }} </p>
+                            <p>予約{{ $reservation_number++ }} </p>
                         </div>
                         <div>
-                            <form action="{{ route('delete', ['reserv_id' => $my_data->id]) }}" method="post">
+                            <form action="{{ route('delete', ['reservation_id' => $my_data->id]) }}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button onclick='return confirm("本当に削除しますか？")'>×</button>
                             </form>
                         </div>
                     </div>
-                    <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reserv_id' => $my_data->id]) }}" method="post">
+                    <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
                         @csrf
                         <table>
                             <tr>
@@ -51,9 +51,9 @@
                                     @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
                                     <button>変更する</button>
                                     @elseif($my_data->is_review)
-                                    <a class="review_btn" href="{{ route('reviewconfirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
+                                    <a class="review_btn" href="{{ route('review_confirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
                                     @else
-                                    <a class="review_btn"  href="{{ route('reviewpage', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
+                                    <a class="review_btn"  href="{{ route('review', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
                                     @endif
                                 </td>
                             </tr>

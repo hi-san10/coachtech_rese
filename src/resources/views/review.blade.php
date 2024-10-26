@@ -7,7 +7,7 @@
 @section('content')
 <div class="review-container">
     <div class="review-content">
-        <form action="/review" method="post">
+        <form action="/review/store" method="post">
             @csrf
             <div class="review-content__review">
                 <h2 class="shop_name">{{ $shop_name }}の評価</h2>

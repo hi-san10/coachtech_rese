@@ -43,7 +43,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::post('/reservation/{user_id?}/{shop_id}', [ReservationController::class, 'reservation'])->name('reservation');
 
-Route::delete('/mypage/delete/{reserv_id}', [ReservationController::class, 'delete'])->name('delete');
+Route::delete('/mypage/delete/{reservation_id}', [ReservationController::class, 'delete'])->name('delete');
 
 
 Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
@@ -56,10 +56,10 @@ Route::get('/d', [ShopController::class, 'd']);
 
 Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
 
-Route::post('/mypage/change/{id}/{name}/{reserv_id}', [ReservationController::class, 'changeform'])->name('changeform');
+Route::post('/mypage/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'changeform'])->name('changeform');
 
-Route::get('reviewpage/{reservation_id}/{shop_name}', [ReviewController::class, 'index'])->name('reviewpage');
+Route::get('review/{reservation_id}/{shop_name}', [ReviewController::class, 'review'])->name('review');
 
-Route::post('review', [ReviewController::class, 'review']);
+Route::post('/review/store', [ReviewController::class, 'store']);
 
-Route::get('reviwconfirm/{reservation_id}/{shop_name}', [ReviewController::class, 'reviewconfirm'])->name('reviewconfirm');
+Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::class, 'confirm'])->name('review_confirm');
