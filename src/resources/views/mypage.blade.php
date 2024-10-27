@@ -27,6 +27,7 @@
                             </form>
                         </div>
                     </div>
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(200)->generate('https://www.example.com')) !!} ">
                     <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
                         @csrf
                         <table>
