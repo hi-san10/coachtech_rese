@@ -14,6 +14,7 @@
             <div class="confirm__inner">
                 @foreach($my_datas as $my_data)
                 <div class="confirm__item">
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('https://www.example.com')) !!} ">
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
                             <span>🕙</span>
@@ -27,7 +28,6 @@
                             </form>
                         </div>
                     </div>
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(200)->generate('https://www.example.com')) !!} ">
                     <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
                         @csrf
                         <table>
