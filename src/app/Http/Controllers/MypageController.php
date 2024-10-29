@@ -16,12 +16,14 @@ class MypageController extends Controller
     {
         // $my_datas = Reservation::with('restaurant')->join('reviews', 'reservations.id', '=', 'reviews.reservation_id')->get();
         // dd($my_datas);
+        $url = 'ec2-13-231-239-160.ap-northeast-1.compute.amazonaws.com';
 
         $my_datas = Reservation::with('restaurant', 'review')->where('user_id', Auth::id())->get();
         foreach($my_datas as $my_data)
         {
             $my_data->is_review = Review::where('reservation_id', $my_data->id)->exists();
         }
+        $id = 1;
 
         $current = CarbonImmutable::today()->format('Y-m-d');
         $reservation_number = 1;
@@ -32,7 +34,7 @@ class MypageController extends Controller
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
 
-        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant'));
+        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant', 'url', 'id'));
     }
 
 

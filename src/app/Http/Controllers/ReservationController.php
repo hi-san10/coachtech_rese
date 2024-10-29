@@ -24,7 +24,7 @@ class ReservationController extends Controller
         return view('done');
     }
 
-    public function changeform(Request $request)
+    public function change_form(Request $request)
     {
         $my_datas = Reservation::with('restaurant')->where('user_id', Auth::id())->where('restaurant_id', $request->id)->where('id', $request->reservation_id)->first();
 
@@ -46,6 +46,13 @@ class ReservationController extends Controller
         Reservation::where('id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
 
         return redirect(route('mypage'));
+    }
+
+    public function reservation_qr(Request $request)
+    {
+        $my_datas = Reservation::with('restaurant')->whereId($request->id)->first();
+
+        return view('my_reservation', compact('my_datas'));
     }
 
 }

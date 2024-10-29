@@ -56,10 +56,12 @@ Route::get('/d', [ShopController::class, 'd']);
 
 Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
 
-Route::post('/mypage/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'changeform'])->name('changeform');
+Route::post('/mypage/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
 
 Route::get('review/{reservation_id}/{shop_name}', [ReviewController::class, 'review'])->name('review');
 
 Route::post('/review/store', [ReviewController::class, 'store']);
 
 Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::class, 'confirm'])->name('review_confirm');
+
+Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');

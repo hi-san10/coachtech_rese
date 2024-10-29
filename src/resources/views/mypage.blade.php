@@ -13,11 +13,14 @@
         <div class="rese-mypage__content-confirm">
             <div class="confirm__inner">
                 @foreach($my_datas as $my_data)
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('$url.$id')) !!} ">
                 <div class="confirm__item">
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('https://www.example.com')) !!} ">
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('ec2-18-179-24-148.ap-northeast-1.compute.amazonaws.com')) !!} ">
+                    <a href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
+                    <a href="{{ $url.$id }}">url</a>
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
-                            <span>🕙</span>
+                            <span>🕙{{ $my_data->id }}</span>
                             <p>予約{{ $reservation_number++ }} </p>
                         </div>
                         <div>
@@ -28,7 +31,7 @@
                             </form>
                         </div>
                     </div>
-                    <form action="{{ route('changeform', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
+                    <form action="{{ route('change_form', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
                         @csrf
                         <table>
                             <tr>
