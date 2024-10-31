@@ -13,14 +13,13 @@
         <div class="rese-mypage__content-confirm">
             <div class="confirm__inner">
                 @foreach($my_datas as $my_data)
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('$url.$id')) !!} ">
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate($url.'/'.$my_data->id)) !!} ">
                 <div class="confirm__item">
                     <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('ec2-18-179-24-148.ap-northeast-1.compute.amazonaws.com')) !!} ">
-                    <a href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
-                    <a href="{{ $url.$id }}">url</a>
+                    <a class="my_reservation" href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
-                            <span>🕙{{ $my_data->id }}</span>
+                            <span>🕙</span>
                             <p>予約{{ $reservation_number++ }} </p>
                         </div>
                         <div>
@@ -58,6 +57,22 @@
                                     <a class="review_btn" href="{{ route('review_confirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
                                     @else
                                     <a class="review_btn"  href="{{ route('review', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
+                                    <div class="content">
+                                        <form action="{{ asset('charge') }}" method="post">
+                                            @csrf
+                                            <script
+                                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                    data-key="{{ env('STRIPE_KEY') }}"
+                                                    data-amount="1000"
+                                                    data-name="Stripe Demo"
+                                                    data-label="決済をする"
+                                                    data-description="Online course about integrating Stripe"
+                                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                    data-locale="auto"
+                                                    data-currency="JPY">
+                                            </script>
+                                        </form>
+                                    </div>
                                     @endif
                                 </td>
                             </tr>

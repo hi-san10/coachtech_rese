@@ -52,6 +52,7 @@ Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_f
 
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 
+// 不要ルート
 Route::get('/d', [ShopController::class, 'd']);
 
 Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
@@ -65,3 +66,5 @@ Route::post('/review/store', [ReviewController::class, 'store']);
 Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::class, 'confirm'])->name('review_confirm');
 
 Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');
+
+Route::post('/charge', [ChargeController::class, 'charge']);

@@ -23,7 +23,6 @@ class MypageController extends Controller
         {
             $my_data->is_review = Review::where('reservation_id', $my_data->id)->exists();
         }
-        $id = 1;
 
         $current = CarbonImmutable::today()->format('Y-m-d');
         $reservation_number = 1;
@@ -34,7 +33,7 @@ class MypageController extends Controller
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
 
-        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant', 'url', 'id'));
+        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant', 'url'));
     }
 
 

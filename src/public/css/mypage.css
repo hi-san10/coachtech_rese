@@ -162,6 +162,7 @@ table tr:not(:last-child) {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    align-content: flex-start;
 }
 
 .change {
@@ -169,4 +170,11 @@ table tr:not(:last-child) {
     text-decoration: none;
 }
 
+/* 提出前に消す */
+.my_reservation {
+    color: white;
+}
 
+td:last-of-type {
+    display: flex;
+}
