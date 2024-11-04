@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,7 @@ Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::cla
 Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');
 
 Route::post('/charge', [ChargeController::class, 'charge']);
+
+Route::get('/admin', [AdminController::class, 'admin']);
+
+Route::post('/admin/store', [AdminController::class, 'store']);

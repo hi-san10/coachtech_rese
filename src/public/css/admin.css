@@ -1,0 +1,54 @@
+.rese-admin {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.rese-admin__content {
+    width: 40%;
+    height: 50%;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    border-radius: 5px;
+}
+
+.rese-admin__content-inner {
+    background-color: white;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.rese-admin__content-inner:last-child {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.content-inner__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-inner__form input {
+    margin: 15px 0;
+    border-bottom: solid gray 0.5px;
+}
+
+.form__btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form__btn:hover {
+    color: red;
+}
+
+.rese-admin__content-inner a {
+    text-decoration: none;
+    color: black;
+}

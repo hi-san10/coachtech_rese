@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Carbon\CarbonImmutable;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,11 +18,19 @@ class UsersTableSeeder extends Seeder
     {
         $content = [
             'name' => '管理者',
-            'email' => 'k@k',
-            'password' => '1111',
-            'email_verified_at' => '2024-10-24 00:00:00',
-            'token' => 'hj5IHW',
+            'email' => 'admin@mail.com',
+            'password' => Hash::make('1111'),
+            'email_verified_at' => CarbonImmutable::today(),
             'authorify' => '1'
+        ];
+        DB::table('users')->insert($content);
+
+        $content = [
+            'name' => '店舗代表者',
+            'email' => 'sennin@mail.com',
+            'password' => Hash::make('0001'),
+            'email_verified_at' => CarbonImmutable::today(),
+            'authorify' => '2'
         ];
         DB::table('users')->insert($content);
     }

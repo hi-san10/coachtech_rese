@@ -73,6 +73,7 @@ class LoginController extends Controller
             $email = $request->email;
             $user = User::where('email', $email)->first();
             $email_verified_at = $user->email_verified_at;
+            $authorify = $user->authorify;
 
             $credentials = ([
                 'email' => $email,
@@ -83,10 +84,14 @@ class LoginController extends Controller
             {
                 return redirect('/login');
 
-            }elseif(Auth::attempt($credentials))
+            }elseif(Auth::attempt($credentials) && $authorify == null)
             {
                 $request->session()->regenerate();
                 return redirect('/');
+            }elseif(Auth::attempt($credentials) && $authorify == 1)
+            {
+                $request->session()->regenerate();
+                return redirect('/admin');
             }
 
             return back();
