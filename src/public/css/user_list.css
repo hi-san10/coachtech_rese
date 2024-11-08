@@ -1,0 +1,12 @@
+.rese-user_list {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rese-user_list__content {
+    width: 50%;
+    margin: auto;
+}
+

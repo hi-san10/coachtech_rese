@@ -26,4 +26,10 @@ class AdminController extends Controller
 
         return redirect('admin');
     }
+
+    public function list()
+    {
+        $users = User::select('name', 'email')->paginate(7);
+        return view('user_list', compact('users'));
+    }
 }
