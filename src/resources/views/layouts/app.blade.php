@@ -41,6 +41,7 @@
                     <a class="menu__content-link" href="/">Home</a>
                     <a class="menu__content-link menu__content-btn" href="/register">Registration</a>
                     <a class="menu__content-link" href="/login">Login</a>
+                    <a href="/admin" class="menu__content-link">admin</a>
                 </div>
             </div>
             @yield('link')

@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function admin_user()
+    {
+        return $this->belongsTo(Admin_user::class);
+    }
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Models\Admin_user;
 
 class LoginController extends Controller
 {
@@ -73,18 +74,18 @@ class LoginController extends Controller
             $email = $request->email;
             $user = User::where('email', $email)->first();
             $email_verified_at = $user->email_verified_at;
-            $authorify = $user->authorify;
 
             $credentials = ([
                 'email' => $email,
                 'password' => $request->password
             ]);
 
+            // 管理者と店舗代表者は違う画面に遷移するようにする
             if(is_null($email_verified_at))
             {
                 return redirect('/login');
 
-            }elseif(Auth::attempt($credentials) && $authorify == null)
+            }elseif(Auth::attempt($credentials))
             {
                 $request->session()->regenerate();
                 return redirect('/');

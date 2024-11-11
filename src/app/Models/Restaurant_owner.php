@@ -16,4 +16,9 @@ class Restaurant_owner extends Model
         'password',
         'email_verified_at'
     ];
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 }

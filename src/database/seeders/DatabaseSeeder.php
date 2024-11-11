@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(PrefecturesTableSeeder::class);
         // $this->call(GenresTableSeeder::class);
         // $this->call(RestaurantsTableSeeder::class);
-        // $this->call(UsersTableSeeder::class);
-        User::factory(20)->create();
+        $this->call(Admin_usersTableSeeder::class);
+        $this->call(Restaurant_ownersTableSeeder::class);
+        // User::factory(20)->create();
     }
 }
