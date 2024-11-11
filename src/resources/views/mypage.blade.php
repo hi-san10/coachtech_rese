@@ -15,7 +15,7 @@
                 @foreach($my_datas as $my_data)
                     <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate($url.'/'.$my_data->id)) !!} ">
                 <div class="confirm__item">
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('ec2-18-179-24-148.ap-northeast-1.compute.amazonaws.com')) !!} ">
+                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('ec2-35-76-115-66.ap-northeast-1.compute.amazonaws.com')) !!} ">
                     <a class="my_reservation" href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
