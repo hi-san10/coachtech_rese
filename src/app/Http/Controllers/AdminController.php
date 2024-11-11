@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Carbon\CarbonImmutable;
+use App\Mail\NoticeMail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -27,9 +29,21 @@ class AdminController extends Controller
         return redirect('admin');
     }
 
-    public function list()
+    public function notice_mail()
     {
-        $users = User::select('name', 'email')->paginate(7);
-        return view('user_list', compact('users'));
+        return view('create_notice_mail');
+    }
+
+    public function notice_send(Request $request)
+    {
+        $user = User::select('email')->get();
+        $email = [
+            'subject' => $request->subject,
+            'mail_txt' => $request->mail_txt
+        ];
+
+        Mail::to($user)->send(new NoticeMail($email));
+
+        return redirect('admin');
     }
 }

@@ -17,7 +17,7 @@
             </form>
         </div>
         <div class="rese-admin__content-inner">
-            <a href="/admin/user/list">お知らせメールを送信する</a>
+            <a href="/admin/notice/mail">お知らせメールを送信する</a>
         </div>
     </div>
 </div>

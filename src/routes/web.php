@@ -74,4 +74,6 @@ Route::get('/admin', [AdminController::class, 'admin']);
 
 Route::post('/admin/store', [AdminController::class, 'store']);
 
-Route::get('/admin/user/list', [AdminController::class, 'list']);
+Route::get('/admin/notice/mail', [AdminController::class, 'notice_mail']);
+
+Route::post('/notice/send', [AdminController::class, 'notice_send']);

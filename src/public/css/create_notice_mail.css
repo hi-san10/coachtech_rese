@@ -1,0 +1,53 @@
+.rese-create_notice_mail {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rese-create_notice_mail__content {
+    width: 50%;
+    margin: auto;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+.content_inner {
+    width: 80%;
+    margin: auto;
+}
+
+.inner_item {
+    display: flex;
+    flex-direction: column;
+}
+
+.subject {
+    padding-top: 20px;
+}
+
+.txt {
+    margin: 20px 0;
+}
+
+label {
+    color: white;
+    margin-bottom: 3px;
+}
+
+.mail_txt {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.btn {
+    padding-bottom: 20px;
+}
+
+button {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+}
+
