@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\Admin_user;
-use App\Models\restaurant_owner;
+use App\Models\restaurantOwner;
 
 class LoginController extends Controller
 {
