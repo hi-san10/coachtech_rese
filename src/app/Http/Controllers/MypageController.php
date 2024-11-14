@@ -57,9 +57,7 @@ class MypageController extends Controller
 
     public function qr_code(Request $request)
     {
-        $url = 'ec2-13-231-239-160.ap-northeast-1.compute.amazonaws.com/my_reservation/'.$request->reservation_id;
-
-        $qr_code = QrCode::size(200)->generate($url);
+        $qr_code = QrCode::size(200)->generate('ec2-35-77-107-76.ap-northeast-1.compute.amazonaws.com/my_reservation/'.$request->reservation_id);
         return view('qr_code', compact('qr_code'));
     }
 }
