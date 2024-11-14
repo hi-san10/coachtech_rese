@@ -75,7 +75,7 @@ class LoginController extends Controller
             $email = $request->email;
             $user = User::where('email', $email)->first();
             $admin = Admin_user::where('email', $email)->first();
-            $restaurant_owner = Restaurant_owner::where('email', $email)->first();
+            $restaurant_owner = RestaurantOwner::where('email', $email)->first();
 
             $credentials = ([
                 'email' => $email,
