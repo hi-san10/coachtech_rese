@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(PrefecturesTableSeeder::class);
-        // $this->call(GenresTableSeeder::class);
-        // $this->call(RestaurantsTableSeeder::class);
-        // $this->call(Admin_usersTableSeeder::class);
-        // $this->call(Restaurant_ownersTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
+        $this->call(PrefecturesTableSeeder::class);
+        $this->call(GenresTableSeeder::class);
+        $this->call(RestaurantsTableSeeder::class);
+        $this->call(Admin_usersTableSeeder::class);
+        $this->call(Restaurant_ownersTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
         // User::factory(20)->create();
     }
 }
