@@ -16,5 +16,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-    }
+        $content = [
+            'name' => 's',
+            'email' => 's@mail.com',
+            'password' => Hash::make('9999'),
+            'email_verified_at' => CarbonImmutable::today()
+        ];
+        DB::table('users')->insert($content);
+}
 }

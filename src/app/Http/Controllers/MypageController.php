@@ -9,6 +9,7 @@ use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
 use Carbon\CarbonImmutable;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class MypageController extends Controller
 {
@@ -54,5 +55,11 @@ class MypageController extends Controller
         return back();
     }
 
+    public function qr_code(Request $request)
+    {
+        $url = 'ec2-13-231-239-160.ap-northeast-1.compute.amazonaws.com/my_reservation/'.$request->reservation_id;
 
+        $qr_code = QrCode::size(200)->generate($url);
+        return view('qr_code', compact('qr_code'));
+    }
 }

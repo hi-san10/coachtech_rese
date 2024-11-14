@@ -16,7 +16,7 @@ class CreateRestaurantOwnersTable extends Migration
         Schema::create('restaurant_owners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete()->nullable();
+            $table->foreignId('restaurant_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

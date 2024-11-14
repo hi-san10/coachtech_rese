@@ -77,3 +77,7 @@ Route::post('/admin/store', [AdminController::class, 'store']);
 Route::get('/admin/notice/mail', [AdminController::class, 'notice_mail']);
 
 Route::post('/notice/send', [AdminController::class, 'notice_send']);
+
+Route::get('/restaurant_owner', [AdminController::class, 'restaurant_owner']);
+
+Route::get('/mypage/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');

@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\Admin_user;
+use App\Models\restaurant_owner;
 
 class LoginController extends Controller
 {
@@ -73,29 +74,72 @@ class LoginController extends Controller
         {
             $email = $request->email;
             $user = User::where('email', $email)->first();
-            $email_verified_at = $user->email_verified_at;
+            $admin = Admin_user::where('email', $email)->first();
+            $restaurant_owner = Restaurant_owner::where('email', $email)->first();
 
             $credentials = ([
                 'email' => $email,
                 'password' => $request->password
             ]);
 
-            // 管理者と店舗代表者は違う画面に遷移するようにする
-            if(is_null($email_verified_at))
+            if($user)
             {
-                return redirect('/login');
+                $email_verified_at = $user->email_verified_at;
 
-            }elseif(Auth::attempt($credentials))
-            {
-                $request->session()->regenerate();
-                return redirect('/');
-            }elseif(Auth::attempt($credentials) && $authorify == 1)
-            {
-                $request->session()->regenerate();
-                return redirect('/admin');
-            }
+                if(is_null($email_verified_at))
+                {
+                    return redirect('/login');
+                }else{
+                    Auth::attempt($credentials);
+                    $request->session()->regenerate();
+                    return redirect('/');
+                }
+            }elseif($admin){
+                $email_verified_at = $admin->email_verified_at;
 
-            return back();
+                if(is_null($email_verified_at))
+                {
+                    return redirect('/login');
+                }else{
+                    Auth::attempt($credentials);
+                    $request->session()->regenerate();
+                    return redirect('/admin');
+                }
+            }elseif($restaurant_owner){
+                $email_verified_at = $restaurant_owner->email_verified_at;
+
+                if(is_null($email_verified_at))
+                {
+                    return redirect('/login');
+                }else{
+                    Auth::attempt($credentials);
+                    $request->session()->regenerate();
+                    return redirect('/restaurant_owner');
+                }
+            }else{}
+            // $email_verified_at = $user->email_verified_at;
+
+            // $credentials = ([
+            //     'email' => $email,
+            //     'password' => $request->password
+            // ]);
+
+            // // 管理者と店舗代表者は違う画面に遷移するようにする
+            // if(is_null($email_verified_at))
+            // {
+            //     return redirect('/login');
+
+            // }elseif(Auth::attempt($credentials))
+            // {
+            //     $request->session()->regenerate();
+            //     return redirect('/');
+            // }elseif(Auth::attempt($credentials) && $authorify == 1)
+            // {
+            //     $request->session()->regenerate();
+            //     return redirect('/admin');
+            // }
+
+            // return back();
         }
 
         public function logout(Request $request)

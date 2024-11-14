@@ -89,6 +89,12 @@ table tr:not(:last-child) {
     padding-bottom: 25px;
 }
 
+.qr_code {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
 .review_btn {
     color: white;
     text-decoration: none;

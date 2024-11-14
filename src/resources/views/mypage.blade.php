@@ -13,9 +13,7 @@
         <div class="rese-mypage__content-confirm">
             <div class="confirm__inner">
                 @foreach($my_datas as $my_data)
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate($url.'/'.$my_data->id)) !!} ">
                 <div class="confirm__item">
-                    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(80)->generate('ec2-35-76-115-66.ap-northeast-1.compute.amazonaws.com')) !!} ">
                     <a class="my_reservation" href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
@@ -53,6 +51,7 @@
                                 <td>
                                     @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
                                     <button>変更する</button>
+                                    <a class="qr_code" href="{{ route('qr_code', ['reservation_id' => $my_data->id]) }}">QRコード</a>
                                     @elseif($my_data->is_review)
                                     <a class="review_btn" href="{{ route('review_confirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
                                     @else

@@ -23,7 +23,6 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verified_at' => CarbonImmutable::today(),
-            'authorify' => '2'
         ]);
 
         return redirect('admin');
@@ -45,5 +44,10 @@ class AdminController extends Controller
         Mail::to($user)->send(new NoticeMail($email));
 
         return redirect('admin');
+    }
+
+    public function restaurant_owner()
+    {
+        return view('restaurant_owner');
     }
 }
