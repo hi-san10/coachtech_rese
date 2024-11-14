@@ -20,7 +20,7 @@ class ShopController extends Controller
         {
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
-        return view('shop_all', compact('restaurants', 'restaurant'));
+        return view('shop_all', compact('restaurants'));
     }
 
     public function detail(Request $request)
