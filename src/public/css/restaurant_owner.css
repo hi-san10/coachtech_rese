@@ -1,0 +1,8 @@
+.rese-restaurant_owner {
+    height: 90vh;
+}
+
+.restaurant_owner__content {
+    display: flex;
+    flex-direction: column;
+}
