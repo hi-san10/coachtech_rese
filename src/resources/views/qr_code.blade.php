@@ -9,6 +9,6 @@
     <div class="rese-qr_code__content">
         {!! $qr_code !!}
     </div>
-    {!! QrCode::size(200)->generate(url($data)) !!}
+    {!! QrCode::size(200)->generate(url($reservation_url)) !!}
 </div>
 @endsection
