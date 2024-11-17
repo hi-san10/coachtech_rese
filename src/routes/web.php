@@ -81,3 +81,11 @@ Route::post('/notice/send', [AdminController::class, 'notice_send']);
 Route::get('/restaurant_owner', [AdminController::class, 'restaurant_owner']);
 
 Route::get('/mypage/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
+
+Route::get('/admin_login', [LoginController::class, 'admin_login']);
+
+Route::get('/restaurant_owner_login', [LoginController::class, 'restaurant_owner_login']);
+
+Route::post('/admin_login/login', [LoginController::class, 'admin_login_login']);
+
+Route::post('/restaurant_owner_login/login', [LoginController::class, 'restaurant_owner_login_login']);

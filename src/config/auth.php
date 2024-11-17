@@ -72,14 +72,8 @@ return [
 
         'admin_users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin_user::class,
+            'model' => App\Models\AdminUser::class,
         ],
-
-        'restaurant_owners' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Restaurant_owner::class,
-        ]
-
 
         // 'users' => [
         //     'driver' => 'database',

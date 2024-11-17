@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        \Auth::provider('my_admin', function($app, array $config) {
+            return new \App\Http\Controllers\Auth\AdminUserProvider($app['hash'], $config['model']);
+        });
+
         //
     }
 }

@@ -40,6 +40,8 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    // protected $table = 'admin_users';
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -59,8 +61,8 @@ class User extends Authenticatable
         return $this->hasMany(Reservation::class);
     }
 
-    public function admin_user()
+    public function admin()
     {
-        return $this->belongsTo(Admin_user::class);
+        return $this->belongsTo(AdminUser::class);
     }
 }

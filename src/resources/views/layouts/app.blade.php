@@ -41,8 +41,8 @@
                     <a class="menu__content-link" href="/">Home</a>
                     <a class="menu__content-link menu__content-btn" href="/register">Registration</a>
                     <a class="menu__content-link" href="/login">Login</a>
-                    <a href="/admin" class="menu__content-link">admin</a>
-                    <a href="/restaurant_owner" class="menu__content-link">restaurant_owner</a>
+                    <a class="menu__content-link" href="/admin_login" >AdminLogin</a>
+                    <a class="menu__content-link" href="/restaurant_owner_login">RestaurantOwnerLogin</a>
                 </div>
             </div>
             @yield('link')

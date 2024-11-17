@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
-use App\Models\Admin_user;
+use App\Models\AdminUser;
 use App\Models\RestaurantOwner;
 
 class LoginController extends Controller
@@ -73,9 +73,10 @@ class LoginController extends Controller
         public function login(LoginRequest $request)
         {
             $email = $request->email;
-            $user = User::where('email', $email)->first();
-            $admin = Admin_user::where('email', $email)->first();
+            $admin = AdminUser::where('email', $email)->first();
+            $user = User::with('admin')->where('email', $email)->first();
             $restaurant_owner = RestaurantOwner::where('email', $email)->first();
+            $admin_users = $request->guard;
 
             $credentials = ([
                 'email' => $email,
@@ -94,17 +95,21 @@ class LoginController extends Controller
                     $request->session()->regenerate();
                     return redirect('/');
                 }
-            }elseif($admin){
-                $email_verified_at = $admin->email_verified_at;
+            }elseif(Auth::guard($admin_users)->attempt($credentials))
+            {
+                return redirect('/admin');
+            
+            // }elseif($admin){
+            //     $email_verified_at = $admin->email_verified_at;
 
-                if(is_null($email_verified_at))
-                {
-                    return redirect('/login');
-                }else{
-                    Auth::attempt($credentials);
-                    $request->session()->regenerate();
-                    return redirect('/admin');
-                }
+            //     if(is_null($email_verified_at))
+            //     {
+            //         return redirect('/login');
+            //     }else{
+            //         Auth::guard('admin_users')->attempt($credentials);
+            //         $request->session()->regenerate();
+            //         return redirect('/admin');
+            //     }
             }elseif($restaurant_owner){
                 $email_verified_at = $restaurant_owner->email_verified_at;
 
@@ -150,4 +155,58 @@ class LoginController extends Controller
 
             return redirect('/');
         }
+
+        public function admin_login()
+        {
+            return view('admin_login');
+        }
+
+        public function admin_login_login(Request $request)
+        {
+            $email = $request->email;
+            $admin = AdminUser::where('email', $email)->first();
+            $email_verified_at = $admin->email_verified_at;
+
+            $credentials = ([
+                'email' => $email,
+                'password' => $request->password
+            ]);
+
+            if(is_null($email_verified_at))
+            {
+                return redirect('login');
+            }else{
+                Auth::attempt($credentials);
+                $request->session()->regenerate();
+                return redirect('/admin');
+            }
+        }
+
+        public function restaurant_owner_login()
+        {
+            return view('restaurant_owner_login');
+        }
+
+        public function restaurant_owner_login_login(Request $request)
+        {
+            $email = $request->email;
+            $admin = RestaurantOwner::where('email', $email)->first();
+            $email_verified_at = $admin->email_verified_at;
+
+            $credentials = ([
+                'email' => $email,
+                'password' => $request->password
+            ]);
+
+            if(is_null($email_verified_at))
+            {
+                return redirect('login');
+            }else{
+                Auth::attempt($credentials);
+                $request->session()->regenerate();
+                return redirect('/restaurant_owner');
+            }
+
+        }
+
 }

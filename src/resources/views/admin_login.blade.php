@@ -8,7 +8,7 @@
 <div class="rese-content">
     <div class="login">
         <p class="login__text"><span class="login__text-item">Login</span></p>
-        <form class="login__form" action="/login/login" method="post">
+        <form class="login__form" action="/admin_login/login" method="post">
             @csrf
             <div class="login-item">
                 <i class="fa-solid fa-envelope"></i>
@@ -30,7 +30,6 @@
             </div>
             <div class="login-item__button">
                 <button class="login__button"><span class="login__button-item">ログイン</span></button>
-                <input type="hidden" name="guard" value="admin_users">
             </div>
         </form>
     </div>
