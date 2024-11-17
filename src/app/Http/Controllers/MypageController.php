@@ -56,8 +56,8 @@ class MypageController extends Controller
 
     public function qr_code(Request $request)
     {
-        $url = config('app.url');
-        $qr_code = QrCode::size(200)->generate($url.'/'.'reservation/'.$request->reservation_id);
+        $url = config('app.url').'/'.'reservation/'.$request->reservation_id;
+        $qr_code = QrCode::size(200)->generate($url);
         return view('qr_code', compact('qr_code'));
     }
 }
