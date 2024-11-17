@@ -17,7 +17,6 @@ class MypageController extends Controller
     {
         // $my_datas = Reservation::with('restaurant')->join('reviews', 'reservations.id', '=', 'reviews.reservation_id')->get();
         // dd($my_datas);
-        $url = 'ec2-13-231-239-160.ap-northeast-1.compute.amazonaws.com';
 
         $my_datas = Reservation::with('restaurant', 'review')->where('user_id', Auth::id())->get();
         foreach($my_datas as $my_data)
@@ -34,7 +33,7 @@ class MypageController extends Controller
             $restaurant->is_favorite = Favorite::where('user_id', Auth::id())->where('restaurant_id', $restaurant->id)->exists();
         }
 
-        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant', 'url'));
+        return view('mypage', compact('my_datas', 'current', 'reservation_number', 'restaurants', 'restaurant'));
     }
 
 
@@ -57,7 +56,8 @@ class MypageController extends Controller
 
     public function qr_code(Request $request)
     {
-        $qr_code = QrCode::size(200)->generate('ec2-35-77-107-76.ap-northeast-1.compute.amazonaws.com/my_reservation/'.$request->reservation_id);
+        $url = config('app.url');
+        $qr_code = QrCode::size(200)->generate($url.'/'.'reservation/'.$request->reservation_id);
         return view('qr_code', compact('qr_code'));
     }
 }
