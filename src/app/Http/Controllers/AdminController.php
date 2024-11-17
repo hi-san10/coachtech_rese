@@ -41,7 +41,7 @@ class AdminController extends Controller
             'mail_txt' => $request->mail_txt
         ];
 
-        Mail::to($user)->send(new NoticeMail($email));
+        Mail::bcc($user)->send(new NoticeMail($email));
 
         return redirect('admin');
     }
