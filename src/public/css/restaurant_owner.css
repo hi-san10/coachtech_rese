@@ -1,8 +1,25 @@
 .rese-restaurant_owner {
     height: 90vh;
+    display: flex;
+    justify-content: center;
 }
 
 .restaurant_owner__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 50%;
+    background-color: blue;
+    border-radius: 5px 5px 0 0;
+    margin-top: 100px;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin: 15px 0;
+    font-size: 20px;
 }

@@ -34,7 +34,11 @@
         @foreach($restaurants as $restaurant)
         <div class="rese-shop__item">
             <div class="rese-shop__item-img">
-                <img src="{{ $restaurant->image }}"></img>
+                @if(is_null($restaurant->image))
+                <img class="storage_image" src="{{ asset($restaurant->storage_image) }}" alt="">
+                @else
+                <img class="image" src="{{ $restaurant->image }}"></img>
+                @endif
             </div>
             <div class="rese-shop__item-text">
                 <h3 class="shop__item-text">{{ $restaurant->name }}</h3>

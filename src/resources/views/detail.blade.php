@@ -12,7 +12,11 @@
                 <a href="{{ route('shop_all') }}">&lt;</a>
                 <h2 id="shop_name">{{ $restaurants->name }}</h2>
             </div>
+            @if(is_null($restaurants->image))
+            <img class="shop__img" src="{{ asset($restaurants->storage_image) }}" alt="">
+            @else
             <img class="shop__img" src="{{ $restaurants->image }}" alt="">
+            @endif
             <div class="inner__pre-genre">
                 <small>#{{ $restaurants->prefecture->name_jp }}</small>
                 <small>#{{ $restaurants->genre->name }}</small>

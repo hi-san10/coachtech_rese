@@ -34,7 +34,15 @@
     border-radius: 5px 5px 0 0 ;
 }
 
-.rese-shop__item-img img {
+.storage_image {
+    width: 100%;
+    /* object-fit: cover; */
+    text-align: center;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.image {
     width: 100%;
     object-fit: cover;
     text-align: center;
