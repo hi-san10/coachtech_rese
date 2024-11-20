@@ -85,6 +85,7 @@ class AdminController extends Controller
         $restaurant->name = $request->shop_name;
         $restaurant->name_of_reading_kana = $request->name_of_reading_kana;
         $restaurant->storage_image = 'storage/'.$dir.'/'.$file_name;
+        $restaurant->detail = $request->detail;
         $restaurant->save();
 
         return redirect('/restaurant_owner');
