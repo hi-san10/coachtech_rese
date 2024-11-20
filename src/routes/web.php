@@ -78,7 +78,20 @@ Route::get('/admin/notice/mail', [AdminController::class, 'notice_mail']);
 
 Route::post('/notice/send', [AdminController::class, 'notice_send']);
 
-Route::get('/restaurant_owner', [AdminController::class, 'restaurant_owner']);
+Route::group(['prefix' => '/restaurant_owner'], function()
+{
+    Route::get('/', [AdminController::class, 'restaurant_owner']);
+
+    Route::get('/create_shop', [AdminController::class, 'create_shop_top']);
+
+    Route::get('/edit_shop', [AdminController::class, 'edit_shop_top']);
+
+    Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
+
+    Route::post('/shop_create', [AdminController::class, 'shop_create']);
+});
+
+// Route::get('/restaurant_owner', [AdminController::class, 'restaurant_owner']);
 
 Route::get('/mypage/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
 
