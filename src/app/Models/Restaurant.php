@@ -16,6 +16,7 @@ class Restaurant extends Model
         'name',
         'name_of_reading_kana',
         'image',
+        'storage_image',
         'detail'
     ];
 

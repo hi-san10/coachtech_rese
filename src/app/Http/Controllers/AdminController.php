@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Prefecture;
 use App\Models\Genre;
 use App\Models\Restaurant;
+use App\Models\RestaurantOwner;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -21,8 +23,8 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        User::create([
-            'name' => $request->name,
+        RestaurantOwner::create([
+            'name' => $request->name.'代表者',
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verified_at' => CarbonImmutable::today(),
@@ -51,9 +53,7 @@ class AdminController extends Controller
 
     public function restaurant_owner()
     {
-        $restaurant = Restaurant::all();
-
-        return view('restaurant_owner', compact('restaurant'));
+        return view('restaurant_owner');
     }
 
     public function create_shop_top()
@@ -65,7 +65,10 @@ class AdminController extends Controller
 
     public function edit_shop_top()
     {
-        return view('edit_shop');
+        $restaurant_owner = RestaurantOwner::find(Auth::id());
+        $restaurant = Restaurant::with('prefecture', 'genre')->find($restaurant_owner->restaurant_id);
+
+        return view('edit_shop', compact('restaurant'));
     }
 
     public function reservation_confirm()
@@ -79,14 +82,30 @@ class AdminController extends Controller
         $file_name = $request->file('shop_image')->getClientOriginalName();
         $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
 
-        $restaurant = new Restaurant;
-        $restaurant->prefecture_id = $request->prefecture;
-        $restaurant->genre_id = $request->genre;
-        $restaurant->name = $request->shop_name;
-        $restaurant->name_of_reading_kana = $request->name_of_reading_kana;
-        $restaurant->storage_image = 'storage/'.$dir.'/'.$file_name;
-        $restaurant->detail = $request->detail;
-        $restaurant->save();
+        Restaurant::create([
+            'prefecture_id' => $request->prefecture,
+            'genre_id' => $request->genre,
+            'name' => $request->shop_name,
+            'name_of_reading_kana' => $request->name_of_reading_kana,
+            'storage_image' => 'storage/'.$dir.'/'.$file_name,
+            'detail' => $request->detail
+        ]);
+
+        $restaurant = Restaurant::where('name', $request->shop_name)->first();
+        $restaurant_id = $restaurant->id;
+        RestaurantOwner::where('name', $request->shop_name.'代表者')->update(['restaurant_id' => $restaurant_id]);
+
+        return redirect('/restaurant_owner');
+    }
+
+    public function shop_update(Request $request)
+    {
+        $dir = $request->shop_name;
+        $file_name = $request->file('shop_image')->getClientOriginalName();
+        $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
+
+        $restaurant_owner = RestaurantOwner::find(Auth::id());
+        $restaurant = Restaurant::find($restaurant_owner->restaurant_id)->update(['name' => $request->shop_name, 'name_of_reading_kana' => $request->name_of_reading_kana, 'storage_image' => 'storage/'.$dir.'/'.$file_name]);
 
         return redirect('/restaurant_owner');
     }

@@ -11,7 +11,7 @@
             <a class="link" href="/restaurant_owner/create_shop">店舗作成</a>
         </div>
         <div class="update_restaurant">
-            <a class="link" href="restaurant_owner/edit_shop">店舗情報編集</a>
+            <a class="link" href="{{ route('edit_shop_top') }}">店舗情報編集</a>
         </div>
         <div class="reservation_confirm">
             <a class="link" href="restaurant_owner/reservation_confirm">予約情報確認</a>
