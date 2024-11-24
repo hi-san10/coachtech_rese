@@ -84,16 +84,16 @@ Route::group(['prefix' => '/restaurant_owner'], function()
 
     Route::get('/create_shop', [AdminController::class, 'create_shop_top']);
 
-    Route::get('/edit_shop', [AdminController::class, 'edit_shop_top'])->name('edit_shop_top');
+    Route::get('/edit_shop_top', [AdminController::class, 'edit_shop_top']);
 
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
 
     Route::post('/shop_create', [AdminController::class, 'shop_create']);
 
     Route::post('/shop_update', [AdminController::class, 'shop_update']);
-});
 
-// Route::get('/restaurant_owner', [AdminController::class, 'restaurant_owner']);
+    Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
+});
 
 Route::get('/mypage/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
 

@@ -13,6 +13,8 @@ use App\Models\Genre;
 use App\Models\Restaurant;
 use App\Models\RestaurantOwner;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -71,29 +73,34 @@ class AdminController extends Controller
         return view('edit_shop', compact('restaurant'));
     }
 
-    public function reservation_confirm()
+    public function reservation_confirm(Request $request)
     {
-        return view('reservation_confirm');
+        $restaurant_owner = RestaurantOwner::find(Auth::id());
+        // dd($restaurant_owner);
+        $reservations = Reservation::with('user')->where('restaurant_id', $restaurant_owner->restaurant_id)->get();
+        dd($reservations);
+        return view('reservation_confirm', compact('reservations'));
     }
 
     public function shop_create(Request $request)
     {
-        $dir = $request->shop_name;
-        $file_name = $request->file('shop_image')->getClientOriginalName();
-        $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
-
         Restaurant::create([
             'prefecture_id' => $request->prefecture,
             'genre_id' => $request->genre,
             'name' => $request->shop_name,
             'name_of_reading_kana' => $request->name_of_reading_kana,
-            'storage_image' => 'storage/'.$dir.'/'.$file_name,
             'detail' => $request->detail
         ]);
 
         $restaurant = Restaurant::where('name', $request->shop_name)->first();
         $restaurant_id = $restaurant->id;
         RestaurantOwner::where('name', $request->shop_name.'代表者')->update(['restaurant_id' => $restaurant_id]);
+
+        $file_extension = $request->file('shop_image')->getClientOriginalExtension();
+        $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
+
+        $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
+
 
         return redirect('/restaurant_owner');
     }
