@@ -101,6 +101,6 @@ Route::get('/admin_login', [LoginController::class, 'admin_login']);
 
 Route::get('/restaurant_owner_login', [LoginController::class, 'restaurant_owner_login']);
 
-Route::post('/admin_login/login', [LoginController::class, 'admin_login_login']);
+Route::post('/admin_login/login', [AdminController::class, 'admin_login_login']);
 
 Route::post('/restaurant_owner_login/login', [LoginController::class, 'restaurant_owner_login_login']);

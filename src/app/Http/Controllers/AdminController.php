@@ -15,12 +15,26 @@ use App\Models\RestaurantOwner;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function admin()
     {
         return view('admin');
+    }
+
+    public function admin_login_login(Request $request)
+    {
+        $credentials = ([
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+        if(Auth::guard('admins')->attempt($credentials))
+        {
+            $request->session()->regenerate();
+            return view('admin');
+        }
     }
 
     public function store(Request $request)
@@ -55,7 +69,10 @@ class AdminController extends Controller
 
     public function restaurant_owner()
     {
-        return view('restaurant_owner');
+        $disk = Storage::disk('s3');
+        // $disk->url('reses3_bucket/rese_restaurant/restaurant_38.jpg');
+        // dd($disk->url('reses3_bucket/rese_restaurant/restaurant_38.jpg'));
+        return view('restaurant_owner', compact('disk'));
     }
 
     public function create_shop_top()
@@ -97,9 +114,15 @@ class AdminController extends Controller
         RestaurantOwner::where('name', $request->shop_name.'代表者')->update(['restaurant_id' => $restaurant_id]);
 
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
-        $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
+        // Storage::disk('s3')->('rese_restaurant', 'restaurant_'.$restaurant_id.'.'.$file_extension);
+        $file = $request->file('shop_image');
+        $dir = 'rese_restaurant/';
+        $upload_file = Storage::disk('s3')->putFileAs('/'.$dir, $file, 'restaurant_'.$restaurant_id.'.'.$file_extension);
+        $restaurant->update(['storage_image' => $upload_file]);
+        // dd($upload_file);
+        // $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
 
-        $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
+        // $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
 
 
         return redirect('/restaurant_owner');

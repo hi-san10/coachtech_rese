@@ -73,10 +73,9 @@ class LoginController extends Controller
         public function login(LoginRequest $request)
         {
             $email = $request->email;
-            $admin = AdminUser::where('email', $email)->first();
             $user = User::with('admin')->where('email', $email)->first();
+            $admin = AdminUser::where('email', $email)->first();
             $restaurant_owner = RestaurantOwner::where('email', $email)->first();
-            $admin_users = $request->guard;
 
             $credentials = ([
                 'email' => $email,
@@ -95,56 +94,27 @@ class LoginController extends Controller
                     $request->session()->regenerate();
                     return redirect('/');
                 }
-            }elseif(Auth::guard($admin_users)->attempt($credentials))
-            {
-                return redirect('/admin');
-            
-            // }elseif($admin){
-            //     $email_verified_at = $admin->email_verified_at;
+            }elseif($admin){
+                $email_verified_at = $admin->email_verified_at;
 
-            //     if(is_null($email_verified_at))
-            //     {
-            //         return redirect('/login');
-            //     }else{
-            //         Auth::guard('admin_users')->attempt($credentials);
-            //         $request->session()->regenerate();
-            //         return redirect('/admin');
-            //     }
+                if(is_null($email_verified_at))
+                {
+                    return redirect('/login');
+                }elseif(Auth::guard('admins')->attempt($credentials)){
+                $request->session()->regenerate();
+                return redirect('/admin');
+                }
             }elseif($restaurant_owner){
                 $email_verified_at = $restaurant_owner->email_verified_at;
 
                 if(is_null($email_verified_at))
                 {
                     return redirect('/login');
-                }else{
-                    Auth::attempt($credentials);
+                }elseif(Auth::guard('restaurant_owners')->attempt($credentials)){
                     $request->session()->regenerate();
                     return redirect('/restaurant_owner');
                 }
             }else{}
-            // $email_verified_at = $user->email_verified_at;
-
-            // $credentials = ([
-            //     'email' => $email,
-            //     'password' => $request->password
-            // ]);
-
-            // // 管理者と店舗代表者は違う画面に遷移するようにする
-            // if(is_null($email_verified_at))
-            // {
-            //     return redirect('/login');
-
-            // }elseif(Auth::attempt($credentials))
-            // {
-            //     $request->session()->regenerate();
-            //     return redirect('/');
-            // }elseif(Auth::attempt($credentials) && $authorify == 1)
-            // {
-            //     $request->session()->regenerate();
-            //     return redirect('/admin');
-            // }
-
-            // return back();
         }
 
         public function logout(Request $request)

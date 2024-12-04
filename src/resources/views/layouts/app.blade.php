@@ -13,7 +13,7 @@
 <body>
     <div class="rese">
         <header class="header">
-            @if(Auth::check())
+            @if(Auth::check() || Auth::guard('admins')->check() || Auth::guard('restaurant_owners')->check())
             <div class="header__inner">
                 <a href="#menu1" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
                 <h3 class="title" id="title">Rese</h3>
@@ -27,12 +27,18 @@
             <div class="header__inner-menu" id="menu1">
                 <a href="#" class="close-btn">×</a>
                 <div class="menu__content">
+                    @if(Auth::check())
                     <a class="menu__content-link" href="/">Home</a>
+                    <a class="menu__content-link" href="{{ route('mypage') }}">Mypage</a>
+                    @elseif(Auth::guard('admins')->check())
+                    <a href="/admin" class="menu__content-link">AdminHome</a>
+                    @elseif(Auth::guard('restaurant_owners'))
+                    <a href="/restaurant_owner" class="menu__content-link">RestaurantOwnerHome</a>
+                    @endif
                     <form action="/logout" method="post">
                     @csrf
                     <p class="menu__content-btn"><button>Logout</button></p>
                     </form>
-                    <a class="menu__content-link" href="{{ route('mypage') }}">Mypage</a>
                 </div>
             </div>
             <div class="header__inner-menu" id="menu2">
@@ -41,8 +47,6 @@
                     <a class="menu__content-link" href="/">Home</a>
                     <a class="menu__content-link menu__content-btn" href="/register">Registration</a>
                     <a class="menu__content-link" href="/login">Login</a>
-                    <a class="menu__content-link" href="/admin_login" >AdminLogin</a>
-                    <a class="menu__content-link" href="/restaurant_owner_login">RestaurantOwnerLogin</a>
                 </div>
             </div>
             @yield('link')
