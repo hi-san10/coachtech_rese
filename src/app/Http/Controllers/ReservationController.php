@@ -32,7 +32,7 @@ class ReservationController extends Controller
 
         $current = CarbonImmutable::today()->format('Y-m-d');
 
-        return view('reservationChange', compact('my_datas', 'name', 'current'));
+        return view('reservation_change', compact('my_datas', 'name', 'current'));
     }
 
     public function delete(Request $request)

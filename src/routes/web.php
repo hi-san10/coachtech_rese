@@ -46,7 +46,6 @@ Route::post('/reservation/{user_id?}/{shop_id}', [ReservationController::class, 
 
 Route::delete('/mypage/delete/{reservation_id}', [ReservationController::class, 'delete'])->name('delete');
 
-
 Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
 
 Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
@@ -56,9 +55,16 @@ Route::get('/search', [ShopController::class, 'search'])->name('search');
 // 不要ルート
 Route::get('/d', [ShopController::class, 'd']);
 
-Route::patch('/mypage/change/update/{id}', [ReservationController::class, 'update'])->name('update');
+Route::group(['prefix' => '/mypage'], function()
+{
+    Route::patch('/change/update/{id}', [ReservationController::class, 'update'])->name('update');
 
-Route::post('/mypage/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
+    Route::post('/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
+
+    Route::get('/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
+
+});
+
 
 Route::get('review/{reservation_id}/{shop_name}', [ReviewController::class, 'review'])->name('review');
 
@@ -70,11 +76,15 @@ Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr
 
 Route::post('/charge', [ChargeController::class, 'charge']);
 
-Route::get('/admin', [AdminController::class, 'admin']);
+Route::group(['prefix' => '/admin'], function()
+{
+    Route::get('/', [AdminController::class, 'admin']);
 
-Route::post('/admin/store', [AdminController::class, 'store']);
+    Route::post('/store', [AdminController::class, 'store']);
 
-Route::get('/admin/notice/mail', [AdminController::class, 'notice_mail']);
+    Route::get('/notice/mail', [AdminController::class, 'notice_mail']);
+
+});
 
 Route::post('/notice/send', [AdminController::class, 'notice_send']);
 
@@ -95,12 +105,3 @@ Route::group(['prefix' => '/restaurant_owner'], function()
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
 });
 
-Route::get('/mypage/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
-
-Route::get('/admin_login', [LoginController::class, 'admin_login']);
-
-Route::get('/restaurant_owner_login', [LoginController::class, 'restaurant_owner_login']);
-
-Route::post('/admin_login/login', [AdminController::class, 'admin_login_login']);
-
-Route::post('/restaurant_owner_login/login', [LoginController::class, 'restaurant_owner_login_login']);

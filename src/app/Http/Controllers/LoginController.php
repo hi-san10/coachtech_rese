@@ -114,7 +114,9 @@ class LoginController extends Controller
                     $request->session()->regenerate();
                     return redirect('/restaurant_owner');
                 }
-            }else{}
+            }else{
+                return redirect('/login');
+            }
         }
 
         public function logout(Request $request)
@@ -124,59 +126,6 @@ class LoginController extends Controller
             $request->session()->regenerateToken();
 
             return redirect('/');
-        }
-
-        public function admin_login()
-        {
-            return view('admin_login');
-        }
-
-        public function admin_login_login(Request $request)
-        {
-            $email = $request->email;
-            $admin = AdminUser::where('email', $email)->first();
-            $email_verified_at = $admin->email_verified_at;
-
-            $credentials = ([
-                'email' => $email,
-                'password' => $request->password
-            ]);
-
-            if(is_null($email_verified_at))
-            {
-                return redirect('login');
-            }else{
-                Auth::attempt($credentials);
-                $request->session()->regenerate();
-                return redirect('/admin');
-            }
-        }
-
-        public function restaurant_owner_login()
-        {
-            return view('restaurant_owner_login');
-        }
-
-        public function restaurant_owner_login_login(Request $request)
-        {
-            $email = $request->email;
-            $admin = RestaurantOwner::where('email', $email)->first();
-            $email_verified_at = $admin->email_verified_at;
-
-            $credentials = ([
-                'email' => $email,
-                'password' => $request->password
-            ]);
-
-            if(is_null($email_verified_at))
-            {
-                return redirect('login');
-            }else{
-                Auth::attempt($credentials);
-                $request->session()->regenerate();
-                return redirect('/restaurant_owner');
-            }
-
         }
 
 }

@@ -25,19 +25,6 @@ class AdminController extends Controller
         return view('admin');
     }
 
-    public function admin_login_login(Request $request)
-    {
-        $credentials = ([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-        if(Auth::guard('admins')->attempt($credentials))
-        {
-            $request->session()->regenerate();
-            return view('admin');
-        }
-    }
-
     public function store(AdminRequest $request)
     {
         RestaurantOwner::create([
