@@ -1,0 +1,29 @@
+.rese-reservation_confirm {
+    margin-top: 40px;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+.reservation_confirm__container {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reservation_confirm__content {
+    background-color: blue;
+    border-radius: 5px;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 30px;
+}
+
+.content__inner p {
+    color: white;
+    font-size: 20px;
+    padding-left: 20px;
+}

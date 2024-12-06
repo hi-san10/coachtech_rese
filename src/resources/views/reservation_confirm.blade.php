@@ -10,7 +10,7 @@
         @foreach($reservations as $reservation)
         <div class="reservation_confirm__content">
             <div class="content__inner">
-                <p></p>
+                <p>{{ $reservation->user->name }}　様</p>
             </div>
             <div class="content__inner">
                 <p>{{ $reservation->date }}</p>
@@ -19,7 +19,7 @@
                 <p>{{ substr($reservation->time, 0, 5) }}</p>
             </div>
             <div class="content__inner">
-                <p>{{ $reservation->number_of_people }}</p>
+                <p>{{ $reservation->number_of_people }}人</p>
             </div>
         </div>
         @endforeach

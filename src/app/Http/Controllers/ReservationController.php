@@ -41,9 +41,10 @@ class ReservationController extends Controller
         return back();
     }
 
-    public function update(Request $request)
+    public function update(ReservationRequest $request)
     {
-        Reservation::where('id', $request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
+        dd('k');
+        Reservation::find($request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
 
         return redirect(route('mypage'));
     }

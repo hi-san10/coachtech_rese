@@ -65,25 +65,30 @@ class AdminController extends Controller
 
     public function create_shop_top()
     {
-        $prefectures = Prefecture::all();
-        $genres = Genre::all();
-        return view('create_shop', compact('prefectures', 'genres'));
+        $restaurant_owner = RestaurantOwner::whereId(Auth::guard('restaurant_owners')->id())->first();
+        // dd($restaurant_owner);
+        if(is_null($restaurant_owner->restaurant_id))
+        {
+            $prefectures = Prefecture::all();
+            $genres = Genre::all();
+            return view('create_shop', compact('prefectures', 'genres'));
+        }else{
+            return redirect('restaurant_owner')->with('message', '店舗作成済みです');
+        }
     }
 
     public function edit_shop_top()
     {
-        $restaurant_owner = RestaurantOwner::find(Auth::id());
-        $restaurant = Restaurant::with('prefecture', 'genre')->find($restaurant_owner->restaurant_id);
+        $restaurant_owner = RestaurantOwner::whereId(Auth::guard('restaurant_owners')->id())->first();
+        $restaurant = Restaurant::with('prefecture', 'genre')->whereId($restaurant_owner->restaurant_id)->first();
 
         return view('edit_shop', compact('restaurant'));
     }
 
     public function reservation_confirm(Request $request)
     {
-        $restaurant_owner = RestaurantOwner::find(Auth::id());
-        // dd($restaurant_owner);
-        $reservations = Reservation::with('user')->where('restaurant_id', $restaurant_owner->restaurant_id)->get();
-        dd($reservations);
+        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
+        $reservations = Reservation::with('user')->where('restaurant_id', $restaurant_owner->restaurant_id)->whereDate('date', '>=', CarbonImmutable::today())->oldest('date')->get();
         return view('reservation_confirm', compact('reservations'));
     }
 
@@ -122,9 +127,26 @@ class AdminController extends Controller
         $file_name = $request->file('shop_image')->getClientOriginalName();
         $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
 
-        $restaurant_owner = RestaurantOwner::find(Auth::id());
+        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
         $restaurant = Restaurant::find($restaurant_owner->restaurant_id)->update(['name' => $request->shop_name, 'name_of_reading_kana' => $request->name_of_reading_kana, 'storage_image' => 'storage/'.$dir.'/'.$file_name]);
 
         return redirect('/restaurant_owner');
+    }
+
+    public function password_change()
+    {
+        return view('password_change');
+    }
+
+    public function change_password(Request $request)
+    {
+        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
+        dd(password_verify($request->now_password, $restaurant_owner->password));
+        if($restaurant_owner->password == Hash::make($request->now_password))
+        {
+            dd('K');
+        }
+        $restaurant_owner->update(['password' => Hash::make($request->new_password)]);
+        dd($restaurant_owner);
     }
 }

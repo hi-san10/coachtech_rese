@@ -44,20 +44,17 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::post('/reservation/{user_id?}/{shop_id}', [ReservationController::class, 'reservation'])->name('reservation');
 
-Route::delete('/mypage/delete/{reservation_id}', [ReservationController::class, 'delete'])->name('delete');
-
 Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
 
 Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
 
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 
-// 不要ルート
-Route::get('/d', [ShopController::class, 'd']);
-
 Route::group(['prefix' => '/mypage'], function()
 {
     Route::patch('/change/update/{id}', [ReservationController::class, 'update'])->name('update');
+
+    Route::delete('/delete/{reservation_id}', [ReservationController::class, 'delete'])->name('delete');
 
     Route::post('/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
 
@@ -103,5 +100,9 @@ Route::group(['prefix' => '/restaurant_owner'], function()
     Route::post('/shop_update', [AdminController::class, 'shop_update']);
 
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
+
+    Route::get('/password_change', [AdminController::class, 'password_change']);
+
+    Route::patch('/change_password', [AdminController::class, 'change_password']);
 });
 

@@ -14,7 +14,6 @@
             <div class="confirm__inner">
                 @foreach($my_datas as $my_data)
                 <div class="confirm__item">
-                    <a class="my_reservation" href="{{ route('reservation_qr', ['id' => $my_data->id]) }}">予約確認</a>
                     <div class="confirm__item-header">
                         <div class="item-header__icon">
                             <span>🕙</span>
@@ -97,14 +96,13 @@
                                 <a href="{{ route('detail', ['shop_id' => $restaurant->id]) }}"><span>詳しく見る</span></a>
                             </div>
                             @if(Auth::check())
-                                <form action="{{ route('favorite', ['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
-                                @csrf
+                            <form action="{{ route('favorite', ['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
+                            @csrf
                                 @if($restaurant->is_favorite)
                                 <button class="fa-solid fa-heart" style="color: #ec0914;"></button>
                                 @else
                                 <button class="fa-solid fa-heart" style="color: #c1c7d1;"></button>
                                 @endif
-                            @else
                             @endif
                             </form>
                         </div>

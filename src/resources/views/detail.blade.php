@@ -120,8 +120,6 @@
                 <button form="reservation">予約する</button>
             </div>
         </div>
-
     </div>
-
 </div>
 @endsection
