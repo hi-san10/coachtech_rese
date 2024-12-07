@@ -52,11 +52,12 @@ Route::get('/search', [ShopController::class, 'search'])->name('search');
 
 Route::group(['prefix' => '/mypage'], function()
 {
+
     Route::patch('/change/update/{id}', [ReservationController::class, 'update'])->name('update');
 
     Route::delete('/delete/{reservation_id}', [ReservationController::class, 'delete'])->name('delete');
 
-    Route::post('/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
+    Route::get('/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
 
     Route::get('/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
 

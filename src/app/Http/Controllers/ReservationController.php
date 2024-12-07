@@ -43,7 +43,6 @@ class ReservationController extends Controller
 
     public function update(ReservationRequest $request)
     {
-        dd('k');
         Reservation::find($request->id)->update(['date' => $request->date, 'time' => $request->time, 'number_of_people' => $request->number]);
 
         return redirect(route('mypage'));

@@ -49,6 +49,11 @@
     height: 80px;
 }
 
+.change__btn {
+    color: white;
+    text-decoration: none;
+}
+
 .confirm__item button {
     color: white;
 }
@@ -174,11 +179,6 @@ table tr:not(:last-child) {
 .change {
     color: white;
     text-decoration: none;
-}
-
-/* 提出前に消す */
-.my_reservation {
-    color: white;
 }
 
 td:last-of-type {

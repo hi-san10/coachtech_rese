@@ -27,55 +27,52 @@
                             </form>
                         </div>
                     </div>
-                    <form action="{{ route('change_form', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}" method="post">
-                        @csrf
-                        <table>
-                            <tr>
-                                <th>Shop</th>
-                                <td>{{ $my_data->restaurant->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Date</th>
-                                <td>{{ $my_data->date }}</td>
-                            </tr>
-                            <tr>
-                                <th>Time</th>
-                                <td>{{ substr($my_data->time, 0, 5) }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Number</th>
-                                <td>{{ $my_data->number_of_people }}人
-                                </td>
-                                <td>
-                                    @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
-                                    <button>変更する</button>
-                                    <a class="qr_code" href="{{ route('qr_code', ['reservation_id' => $my_data->id]) }}">QRコード</a>
-                                    @elseif($my_data->is_review)
-                                    <a class="review_btn" href="{{ route('review_confirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
-                                    @else
-                                    <a class="review_btn"  href="{{ route('review', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
-                                    <div class="content">
-                                        <form action="{{ asset('charge') }}" method="post">
-                                            @csrf
-                                            <script
-                                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                    data-key="{{ env('STRIPE_KEY') }}"
-                                                    data-amount="1000"
-                                                    data-name="Stripe Demo"
-                                                    data-label="決済をする"
-                                                    data-description="Online course about integrating Stripe"
-                                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                                    data-locale="auto"
-                                                    data-currency="JPY">
-                                            </script>
-                                        </form>
-                                    </div>
-                                    @endif
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+                    <table>
+                        <tr>
+                            <th>Shop</th>
+                            <td>{{ $my_data->restaurant->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td>{{ $my_data->date }}</td>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <td>{{ substr($my_data->time, 0, 5) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Number</th>
+                            <td>{{ $my_data->number_of_people }}人
+                            </td>
+                            <td>
+                                @if(date('Y-m-d') < date('Y-m-d', strtotime($my_data->date . '+1 day')))
+                                <a class="change__btn" href="{{ route('change_form', ['id' => $my_data->restaurant_id, 'name' => $my_data->restaurant->name, 'reservation_id' => $my_data->id]) }}">変更する</a>
+                                <a class="qr_code" href="{{ route('qr_code', ['reservation_id' => $my_data->id]) }}">QRコード</a>
+                                @elseif($my_data->is_review)
+                                <a class="review_btn" href="{{ route('review_confirm', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価を見る</a>
+                                @else
+                                <a class="review_btn"  href="{{ route('review', ['reservation_id' => $my_data->id, 'shop_name' => $my_data->restaurant->name]) }}">評価する</a>
+                                <div class="content">
+                                    <form action="{{ asset('charge') }}" method="post">
+                                        @csrf
+                                        <script
+                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                data-key="{{ env('STRIPE_KEY') }}"
+                                                data-amount="1000"
+                                                data-name="Stripe Demo"
+                                                data-label="決済をする"
+                                                data-description="Online course about integrating Stripe"
+                                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                data-locale="auto"
+                                                data-currency="JPY">
+                                        </script>
+                                    </form>
+                                </div>
+                                @endif
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 @endforeach
             </div>

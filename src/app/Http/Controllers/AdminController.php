@@ -135,18 +135,21 @@ class AdminController extends Controller
 
     public function password_change()
     {
+        // $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
+        // $email = $restaurant_owner->email;
         return view('password_change');
     }
 
     public function change_password(Request $request)
     {
         $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
-        dd(password_verify($request->now_password, $restaurant_owner->password));
-        if($restaurant_owner->password == Hash::make($request->now_password))
-        {
-            dd('K');
-        }
+        // dd(password_verify($request->now_password, $restaurant_owner->password));
+        // if($restaurant_owner->password == Hash::make($request->now_password))
+        // {
+        //     dd('K');
+        // }
         $restaurant_owner->update(['password' => Hash::make($request->new_password)]);
-        dd($restaurant_owner);
+        // dd($restaurant_owner);
+        return redirect('restaurant_owner');
     }
 }

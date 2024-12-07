@@ -18,7 +18,7 @@ class MypageController extends Controller
         // $my_datas = Reservation::with('restaurant')->join('reviews', 'reservations.id', '=', 'reviews.reservation_id')->get();
         // dd($my_datas);
 
-        $my_datas = Reservation::with('restaurant', 'review')->where('user_id', Auth::id())->get();
+        $my_datas = Reservation::with('restaurant', 'review')->where('user_id', Auth::id())->oldest('date')->get();
         foreach($my_datas as $my_data)
         {
             $my_data->is_review = Review::where('reservation_id', $my_data->id)->exists();
