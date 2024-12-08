@@ -98,7 +98,7 @@ Route::group(['prefix' => '/restaurant_owner'], function()
 
     Route::post('/shop_create', [AdminController::class, 'shop_create']);
 
-    Route::post('/shop_update', [AdminController::class, 'shop_update']);
+    Route::delete('/shop_update', [AdminController::class, 'shop_update']);
 
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
 

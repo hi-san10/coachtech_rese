@@ -21,7 +21,9 @@
         </div>
         <div class="owner_setting">
             <a class="link" href="restaurant_owner/password_change">パスワード変更</a>
-        <img src="{{ Storage::disk('s3')->url('s3://reses3-bucket/rese_restaurant/restaurant_38.jpg') }}" width="150px" alt="">
+            <!-- <img src="{{ Storage::url('/restaurant_images/restaurant_62.jpeg') }}" alt=""> -->
+        <!-- <img src="{{ Storage::disk('s3')->url('rese_restaurant/restaurant_38.jpg') }}" width="150px" alt="">
+        <img src="{{ $disk }}" alt=""> -->
         </div>
     </div>
 </div>

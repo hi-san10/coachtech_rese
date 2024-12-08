@@ -8,6 +8,7 @@
 <div class="rese-edit_shop">
     <div class="edit-shop__content">
         <form class="edit-shop__form" action="/restaurant_owner/shop_update" method="post" enctype="multipart/form-data">
+            @method('delete')
             @csrf
             <div class="content__inner">
                 <label for="shop_name">店舗名</label>

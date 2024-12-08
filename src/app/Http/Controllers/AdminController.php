@@ -57,9 +57,7 @@ class AdminController extends Controller
 
     public function restaurant_owner()
     {
-        $disk = Storage::disk('s3');
-        // $disk->url('reses3_bucket/rese_restaurant/restaurant_38.jpg');
-        // dd($disk->url('reses3_bucket/rese_restaurant/restaurant_38.jpg'));
+        $disk = Storage::disk('s3')->url('rese_restaurant/restaurant_38.jpg');
         return view('restaurant_owner', compact('disk'));
     }
 
@@ -107,15 +105,14 @@ class AdminController extends Controller
         RestaurantOwner::where('name', $request->shop_name.'代表者')->update(['restaurant_id' => $restaurant_id]);
 
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
-        // Storage::disk('s3')->('rese_restaurant', 'restaurant_'.$restaurant_id.'.'.$file_extension);
         $file = $request->file('shop_image');
         $dir = 'rese_restaurant/';
-        $upload_file = Storage::disk('s3')->putFileAs('/'.$dir, $file, 'restaurant_'.$restaurant_id.'.'.$file_extension);
-        $restaurant->update(['storage_image' => $upload_file]);
+        // $upload_file = Storage::disk('s3')->putFileAs($dir, $file, 'restaurant_'.$restaurant_id.'.'.$file_extension);
+        // $restaurant->update(['storage_image' => $upload_file]);
         // dd($upload_file);
-        // $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
+        $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
 
-        // $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
+        $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
 
 
         return redirect('/restaurant_owner');
@@ -123,12 +120,37 @@ class AdminController extends Controller
 
     public function shop_update(Request $request)
     {
-        $dir = $request->shop_name;
-        $file_name = $request->file('shop_image')->getClientOriginalName();
-        $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
+        $restaurant_owner = RestaurantOwner::with('restaurant')->find(Auth::guard('restaurant_owners')->id());
+        $storage_image = $restaurant_owner->restaurant->storage_image;
+        $path = substr($storage_image, 7, 50);
+        Storage::disk('public')->delete($path);
+        // dd($path);
+        // dd('u');
+        // dd(Storage::disk('public'));
+        // dd($storage_image);
+        // dd(Storage::url($storage_image));
+        // Storage::disk('public')->delete('/restaurant_images'.'/'.'restaurant_68.jpg');
+        // $file = Storage::allFiles('public/');
+        // dd($file);
+        // dd(Storage::disk('public')->exists('/restaurant_images'.'/'.'restaurant_32.jpeg'));
+        // dd('i');
+        // dd(Storage::disk('public'));
+        // dd($storage_image);
+        // $file = $request->file('shop_image');
+        $file_extension = $request->file('shop_image')->getClientOriginalExtension();
+        // $dir = 'rese_restaurant/';
+        // $storage_image->delete();
+        // dd('K');
+        $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_owner->restaurant_id.'.'.$file_extension);
+        // $request->file('shop_image')->storeAs('public/'.$dir, $file_name);
+        $restaurant_owner->update(['name' => $request->shop_name.'代表者']);
+        Restaurant::find($restaurant_owner->restaurant_id)->update([
+            'name' => $request->shop_name,
+            'name_of_reading_kana' => $request->name_of_reading_kana,
+            'storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_owner->restaurant_id.'.'.$file_extension]);
 
-        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
-        $restaurant = Restaurant::find($restaurant_owner->restaurant_id)->update(['name' => $request->shop_name, 'name_of_reading_kana' => $request->name_of_reading_kana, 'storage_image' => 'storage/'.$dir.'/'.$file_name]);
+
+        // $restaurant = Restaurant::find($restaurant_owner->restaurant_id)->update(['name' => $request->shop_name, 'name_of_reading_kana' => $request->name_of_reading_kana, 'storage_image' => 'storage/'.$dir.'/'.$file_name]);
 
         return redirect('/restaurant_owner');
     }
