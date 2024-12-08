@@ -36,8 +36,10 @@
             <div class="rese-shop__item-img">
                 @if(is_null($restaurant->image))
                 <img class="storage_image" src="{{ asset($restaurant->storage_image) }}" alt="">
-                @else
+                @elseif(config('app.env') == 'local')
                 <img class="image" src="{{ $restaurant->image }}"></img>
+                @else
+                <img class="storage_image" src="{{ Storage::disk('s3')->url($restaurant->storage_image) }}" alt="">
                 @endif
             </div>
             <div class="rese-shop__item-text">
