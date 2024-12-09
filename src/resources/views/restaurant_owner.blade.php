@@ -20,7 +20,7 @@
             <a class="link" href="restaurant_owner/reservation_confirm">予約情報確認</a>
         </div>
         <div class="owner_setting">
-            <a class="link" href="restaurant_owner/password_change">パスワード変更</a>
+            <a class="link" href="restaurant_owner/passwordChange_mail">パスワード変更</a>
         </div>
     </div>
 </div>

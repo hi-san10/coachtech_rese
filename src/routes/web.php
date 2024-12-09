@@ -20,15 +20,12 @@ use App\Http\Controllers\AdminController;
 */
 Route::group(['middleware' => 'auth'], function()
 {
-
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
 
     Route::get('detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
-
 });
 
 Route::get('/', [ShopController::class, 'index'])->name('shop_all');
-
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
@@ -102,8 +99,8 @@ Route::group(['prefix' => '/restaurant_owner'], function()
 
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
 
-    Route::get('/password_change', [AdminController::class, 'password_change']);
+    Route::get('/passwordChange_mail', [AdminController::class, 'passwordChange_mail']);
 
-    Route::patch('/change_password', [AdminController::class, 'change_password']);
+    Route::get('/change_password/{id}', [AdminController::class, 'change_password'])->name('change_password');
 });
 

@@ -34,13 +34,27 @@
         @foreach($restaurants as $restaurant)
         <div class="rese-shop__item">
             <div class="rese-shop__item-img">
-                @if(is_null($restaurant->image))
+                @if(config('app.env') == 'local')
+                    @if(is_null($restaurant->image))
+                    <img class="storage_image" src="{{ asset($restaurant->storage_image) }}" alt="">
+                    @else
+                    <img class="image" src="{{ $restaurant->image }}" alt="" >
+                    @endif
+                @else
+                    @if(is_null($restaurant->image))
+                    <img class="storage_image" src="{{ Storage::disk('s3')->url($restaurant->storage_image) }}" alt="">
+                    @else
+                    <img class="image" src="{{ $restaurant->image }}" alt="" >
+                    @endif
+                @endif
+
+                <!-- @if(is_null($restaurant->image))
                 <img class="storage_image" src="{{ asset($restaurant->storage_image) }}" alt="">
                 @elseif(config('app.env') == 'local')
                 <img class="image" src="{{ $restaurant->image }}"></img>
                 @else
                 <img class="storage_image" src="{{ Storage::disk('s3')->url($restaurant->storage_image) }}" alt="">
-                @endif
+                @endif -->
             </div>
             <div class="rese-shop__item-text">
                 <h3 class="shop__item-text">{{ $restaurant->name }}</h3>

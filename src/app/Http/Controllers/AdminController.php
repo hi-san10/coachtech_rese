@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\CarbonImmutable;
 use App\Mail\NoticeMail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordChangeMail;
 use App\Models\Prefecture;
 use App\Models\Genre;
 use App\Models\Restaurant;
@@ -57,8 +58,7 @@ class AdminController extends Controller
 
     public function restaurant_owner()
     {
-        $disk = Storage::disk('s3')->url('rese_restaurant/restaurant_38.jpg');
-        return view('restaurant_owner', compact('disk'));
+        return view('restaurant_owner');
     }
 
     public function create_shop_top()
@@ -123,6 +123,8 @@ class AdminController extends Controller
     public function shop_update(Request $request)
     {
         $restaurant_owner = RestaurantOwner::with('restaurant')->find(Auth::guard('restaurant_owners')->id());
+        
+        dd($restaurant_owner->password);
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
 
         if(config('app.env') == 'local')
@@ -143,23 +145,22 @@ class AdminController extends Controller
         return redirect('/restaurant_owner');
     }
 
-    public function password_change()
+    public function passwordChange_mail()
     {
-        // $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
-        // $email = $restaurant_owner->email;
-        return view('password_change');
+        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
+        $restaurant_owner_id = $restaurant_owner->id;
+        $email = $restaurant_owner->email;
+        // dd($restaurant_owner_id.$email);
+
+        Mail::to($email)->send(new PasswordChangeMail($restaurant_owner_id));
+
+        return view('sent_mail');
     }
 
     public function change_password(Request $request)
     {
-        $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
-        // dd(password_verify($request->now_password, $restaurant_owner->password));
-        // if($restaurant_owner->password == Hash::make($request->now_password))
-        // {
-        //     dd('K');
-        // }
+        $restaurant_owner = RestaurantOwner::find($request->id);
         $restaurant_owner->update(['password' => Hash::make($request->new_password)]);
-        // dd($restaurant_owner);
         return redirect('restaurant_owner');
     }
 }
