@@ -65,19 +65,49 @@
 
 3. env.example ファイルから .env を作成し、環境変数を変更
 
+    ・開発環境ではMailtrapサービスを使ってメール機能を開発しています
+
+    ・Mailtrap url:[https://mailtrap.io](https://mailtrap.io)
+
+        ・アカウント作成後、ログインする
+
+        ・左メニューにある Email Testing リンク、もしくは画面中央あたりの Email Testing の「Start Testing」ボタンをクリック
+
+        ・SMTP Settings タブをクリック
+
+        ・Integrations セレクトボックスで、Laravel 7.x,8.x を選択
+
+        ・copy ボタンをクリックして、クリップボードに .env の情報を保存
+
+            ![75F1C55F-FC14-46BE-898D-9C25817259E9](https://github.com/user-attachments/assets/571e1894-4346-4b98-883d-af7e577a743e)
+
+        ・php artisan config:clear　で.env情報を更新
+
+
 4. php artisan key:generate
 
 5. php artisan migrate
 
 6. php artisan db:seed
-![103985DE-3AFC-41D1-B28B-B189BDC8938A](https://github.com/user-attachments/assets/cf370312-651d-4836-94b7-b7154552033a)
-    ・
 
-    ・認証メールの機能はそれぞれでenvファイルを編集して使用してください
+・ 管理者と店舗代表者のメールアドレスとパスワードを画像からご確認ください
 
-    ・
+・ 管理者のダミーデータ↓
+    ![103985DE-3AFC-41D1-B28B-B189BDC8938A](https://github.com/user-attachments/assets/cf370312-651d-4836-94b7-b7154552033a)
 
-    ・
+・ 店舗代表者のダミーデータ↓
+    ![FD5EA0FD-041B-4AEF-B432-22E28D01A9C7](https://github.com/user-attachments/assets/ad3966fc-6179-4ad1-84c8-c06de3f32963)
+    ![04B1E917-C4CF-48AF-910B-4D830017AE1E](https://github.com/user-attachments/assets/761d5d2d-7075-4a9a-82fc-d6607e250670)
+    ![05112EF6-A728-4446-BB89-E15254AA7D07](https://github.com/user-attachments/assets/ea45b5fe-2d70-4aaa-be4f-b36a69fef9be)
+    ![A93B5A1B-B63E-4FC8-A7BC-F8BCA12CEA87](https://github.com/user-attachments/assets/a66365ee-31e6-4599-98cd-2de535aacd1a)
+    ![FED2A9A7-3812-4C43-AB98-95DBED98E53A](https://github.com/user-attachments/assets/b1af28ea-7392-46c2-b236-10264c396df3)
+
+・ 店舗のダミーデータ20件分
+
+・ エリア(都道府県)のデータ47件分
+
+・ ジャンルのデータ5件分
+
 
 ## 使用技術
 
@@ -89,7 +119,7 @@
 
 ## ER図
 
-![](https://github.com/user-attachments/assets/b53378c6-834b-44de-9487-a1a2260fe8c6)
+![68665E27-D515-47E8-A490-7EC4B65D6E67](https://github.com/user-attachments/assets/f58ca598-9b35-4f09-bc88-8b3a363d5455)
 
 ## URL
 
