@@ -123,7 +123,6 @@ class AdminController extends Controller
     {
         $restaurant_owner = RestaurantOwner::with('restaurant')->find(Auth::guard('restaurant_owners')->id());
 
-        // dd($restaurant_owner->password);
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
 
         if(config('app.env') == 'local')
@@ -149,7 +148,6 @@ class AdminController extends Controller
         $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
         $restaurant_owner_id = $restaurant_owner->id;
         $email = $restaurant_owner->email;
-        // dd($restaurant_owner_id.$email);
 
         Mail::to($email)->send(new PasswordChangeMail($restaurant_owner_id));
 

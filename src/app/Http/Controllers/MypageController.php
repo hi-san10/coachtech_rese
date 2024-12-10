@@ -15,9 +15,6 @@ class MypageController extends Controller
 {
     public function index(Request $request)
     {
-        // $my_datas = Reservation::with('restaurant')->join('reviews', 'reservations.id', '=', 'reviews.reservation_id')->get();
-        // dd($my_datas);
-
         $my_datas = Reservation::with('restaurant', 'review')->where('user_id', Auth::id())->oldest('date')->get();
         foreach($my_datas as $my_data)
         {

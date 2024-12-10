@@ -42,13 +42,4 @@ class ShopController extends Controller
 
         return view('shop_all', compact('restaurants', 'restaurant'));
     }
-
-    public function d()
-    {
-        $restaurants = Restaurant::all();
-        $users = User::join('favorites', 'users.id', '=', 'favorites.user_id')->where('user_id', Auth::id())->get();
-        // dd($users);
-
-        return view('done', compact('users', 'restaurants'));
-    }
 }

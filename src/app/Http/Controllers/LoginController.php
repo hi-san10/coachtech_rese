@@ -26,7 +26,11 @@ class LoginController extends Controller
     {
         if(Auth::check())
         {
-            return redirect('/login');
+            return redirect('/');
+        }elseif(Auth::guard('admins')->check()){
+            return redirect('admin');
+        }elseif(Auth::guard('restaurant_owners')->check()){
+            return redirect('restaurant_owner');
         }else{
             return view('register');
         }
