@@ -78,6 +78,8 @@
     ・Integrations セレクトボックスで、Laravel 7.x,8.x を選択
 
     ・copy ボタンをクリックして、クリップボードに .env の情報を保存
+
+    ・.envにコピーした情報を貼り付ける
         ![75F1C55F-FC14-46BE-898D-9C25817259E9](https://github.com/user-attachments/assets/571e1894-4346-4b98-883d-af7e577a743e)
 
     ・php artisan config:clear　で.env情報を更新
