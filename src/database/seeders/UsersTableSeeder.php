@@ -17,9 +17,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $content = [
-            'name' => 's',
-            'email' => 's@mail.com',
-            'password' => Hash::make('9999'),
+            'name' => 'まる',
+            'email' => 'm@mail.com',
+            'password' => Hash::make('0000'),
             'email_verified_at' => CarbonImmutable::today()
         ];
         DB::table('users')->insert($content);

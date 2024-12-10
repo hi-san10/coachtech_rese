@@ -64,7 +64,6 @@ class AdminController extends Controller
     public function create_shop_top()
     {
         $restaurant_owner = RestaurantOwner::whereId(Auth::guard('restaurant_owners')->id())->first();
-        // dd($restaurant_owner);
         if(is_null($restaurant_owner->restaurant_id))
         {
             $prefectures = Prefecture::all();
@@ -123,8 +122,8 @@ class AdminController extends Controller
     public function shop_update(Request $request)
     {
         $restaurant_owner = RestaurantOwner::with('restaurant')->find(Auth::guard('restaurant_owners')->id());
-        
-        dd($restaurant_owner->password);
+
+        // dd($restaurant_owner->password);
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
 
         if(config('app.env') == 'local')
