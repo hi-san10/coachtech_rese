@@ -69,19 +69,19 @@
 
     ・Mailtrap url:[https://mailtrap.io](https://mailtrap.io)
 
-        ・アカウント作成後、ログインする
+    ・アカウント作成後、ログインする
 
-        ・左メニューにある Email Testing リンク、もしくは画面中央あたりの Email Testing の「Start Testing」ボタンをクリック
+    ・左メニューにある Email Testing リンク、もしくは画面中央あたりの Email Testing の「Start Testing」ボタンをクリック
 
-        ・SMTP Settings タブをクリック
+    ・SMTP Settings タブをクリック
 
-        ・Integrations セレクトボックスで、Laravel 7.x,8.x を選択
+    ・Integrations セレクトボックスで、Laravel 7.x,8.x を選択
 
-        ・copy ボタンをクリックして、クリップボードに .env の情報を保存
+    ・copy ボタンをクリックして、クリップボードに .env の情報を保存
 
-            ![75F1C55F-FC14-46BE-898D-9C25817259E9](https://github.com/user-attachments/assets/571e1894-4346-4b98-883d-af7e577a743e)
+        ![75F1C55F-FC14-46BE-898D-9C25817259E9](https://github.com/user-attachments/assets/571e1894-4346-4b98-883d-af7e577a743e)
 
-        ・php artisan config:clear　で.env情報を更新
+    ・php artisan config:clear　で.env情報を更新
 
 
 4. php artisan key:generate
