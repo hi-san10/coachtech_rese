@@ -93,7 +93,8 @@
 
 
 ・ 管理者のダミーデータ↓
-    ![103985DE-3AFC-41D1-B28B-B189BDC8938A](https://github.com/user-attachments/assets/cf370312-651d-4836-94b7-b7154552033a)
+
+![103985DE-3AFC-41D1-B28B-B189BDC8938A](https://github.com/user-attachments/assets/cf370312-651d-4836-94b7-b7154552033a)
 
 ・ 店舗代表者のダミーデータ↓
     ![FD5EA0FD-041B-4AEF-B432-22E28D01A9C7](https://github.com/user-attachments/assets/ad3966fc-6179-4ad1-84c8-c06de3f32963)
