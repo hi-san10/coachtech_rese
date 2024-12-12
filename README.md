@@ -124,6 +124,13 @@
 
 ![68665E27-D515-47E8-A490-7EC4B65D6E67](https://github.com/user-attachments/assets/f58ca598-9b35-4f09-bc88-8b3a363d5455)
 
+## テーブル仕様書
+
+![368CB9FA-147A-4D91-9D24-022E0649C094](https://github.com/user-attachments/assets/bfc9375e-4bab-43df-a9db-433b8130d6ba)
+![917D21F8-6803-4C15-94C4-702D24E7793C](https://github.com/user-attachments/assets/2a361865-e6ef-4c53-bcea-a9df2842c3bf)
+![7592347D-D03A-4ED0-B3B2-FFC6243FB860](https://github.com/user-attachments/assets/756497af-bf88-4ed8-8d6a-e60fa67a0910)
+![20FC4574-AE0E-498E-A402-CEBD096EB953](https://github.com/user-attachments/assets/3d7d7014-563d-4b14-9512-4fea07add639)
+
 ## URL
 
 ・アプリケーション:[http//localhost/](http//localhost/)

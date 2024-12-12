@@ -16,6 +16,9 @@
         <div class="update_restaurant">
             <a class="link" href="/restaurant_owner/edit_shop_top">店舗情報編集</a>
         </div>
+        <div class="create_restaurant-message">
+            <p>{{ session('message_2') }}</p>
+        </div>
         <div class="reservation_confirm">
             <a class="link" href="restaurant_owner/reservation_confirm">予約情報確認</a>
         </div>

@@ -44,8 +44,6 @@ Route::post('/reservation/{user_id?}/{shop_id}', [ReservationController::class, 
 
 Route::post('/favorite/{user_id?}/{shop_id}', [MypageController::class, 'favorite'])->name('favorite');
 
-Route::post('un_favorite/{user_id?}/{shop_id?}', [MypageController::class, 'un_favorite'])->name('un_favorite');
-
 Route::get('/search', [ShopController::class, 'search'])->name('search');
 
 Route::group(['prefix' => '/mypage'], function()
@@ -57,7 +55,7 @@ Route::group(['prefix' => '/mypage'], function()
 
     Route::get('/change/{id}/{name}/{reservation_id}', [ReservationController::class, 'change_form'])->name('change_form');
 
-    Route::get('/qr_code', [MypageController::class, 'qr_code'])->name('qr_code');
+    Route::get('/qr_code/{reservation_id}', [MypageController::class, 'qr_code'])->name('qr_code');
 
 });
 
@@ -68,7 +66,7 @@ Route::post('/review/store', [ReviewController::class, 'store']);
 
 Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::class, 'confirm'])->name('review_confirm');
 
-Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');
+// Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');
 
 Route::post('/charge', [ChargeController::class, 'charge']);
 
@@ -96,7 +94,7 @@ Route::group(['prefix' => '/restaurant_owner'], function()
 
     Route::post('/shop_create', [AdminController::class, 'shop_create']);
 
-    Route::delete('/shop_update', [AdminController::class, 'shop_update']);
+    Route::patch('/shop_update', [AdminController::class, 'shop_update']);
 
     Route::get('/reservation_confirm', [AdminController::class, 'reservation_confirm']);
 

@@ -77,9 +77,15 @@ class AdminController extends Controller
     public function edit_shop_top()
     {
         $restaurant_owner = RestaurantOwner::whereId(Auth::guard('restaurant_owners')->id())->first();
+        if(is_null($restaurant_owner->restaurant_id))
+        {
+            return redirect('restaurant_owner')->with('message_2', '店舗を作成されてません');
+        }else
+        {
         $restaurant = Restaurant::with('prefecture', 'genre')->whereId($restaurant_owner->restaurant_id)->first();
 
         return view('edit_shop', compact('restaurant'));
+        }
     }
 
     public function reservation_confirm(Request $request)

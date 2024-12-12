@@ -47,12 +47,4 @@ class ReservationController extends Controller
 
         return redirect(route('mypage'));
     }
-
-    public function reservation_qr(Request $request)
-    {
-        $my_datas = Reservation::with('restaurant')->whereId($request->id)->first();
-
-        return view('my_reservation', compact('my_datas'));
-    }
-
 }
