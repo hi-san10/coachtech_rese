@@ -135,6 +135,6 @@
 
 ・アプリケーション(開発環境):[http//localhost/](http//localhost/)
 
-・アプリケーション(本番環境):[ec2-35-78-70-206.ap-northeast-1.compute.amazonaws.com](ec2-35-78-70-206.ap-northeast-1.compute.amazonaws.com)
+・アプリケーション(本番環境):[http://ec2-35-78-70-206.ap-northeast-1.compute.amazonaws.com](http://ec2-35-78-70-206.ap-northeast-1.compute.amazonaws.com)
 
 ・phpMyAdmin:[http//localhost:8080](http/localhost:8080)
