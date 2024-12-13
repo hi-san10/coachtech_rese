@@ -40,8 +40,6 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    // protected $table = 'admin_users';
-    // protected $table = 'restaurant_owners';
 
     protected $casts = [
         'email_verified_at' => 'datetime',

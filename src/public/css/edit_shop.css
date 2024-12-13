@@ -1,12 +1,10 @@
 .rese-edit_shop {
-    height: 90vh;
     display: flex;
     justify-content: center;
 }
 
 .edit-shop__content {
     width: 80%;
-    height: 80%;
     background-color: blue;
     display: flex;
     justify-content: center;

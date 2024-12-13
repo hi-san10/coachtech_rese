@@ -84,12 +84,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\RestaurantOwner::class,
         ]
-        
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

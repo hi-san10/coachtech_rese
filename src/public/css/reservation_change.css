@@ -11,9 +11,6 @@
     height: 95%;
     border-radius: 5px;
     box-shadow: 1px 1px 5px gray;
-    /* position: absolute;
-    top: -50px;
-    left: 760px; */
     display: flex;
     flex-direction: column;
 }

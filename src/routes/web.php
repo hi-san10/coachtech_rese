@@ -59,14 +59,11 @@ Route::group(['prefix' => '/mypage'], function()
 
 });
 
-
 Route::get('review/{reservation_id}/{shop_name}', [ReviewController::class, 'review'])->name('review');
 
 Route::post('/review/store', [ReviewController::class, 'store']);
 
 Route::get('review/confirm/{reservation_id}/{shop_name}', [ReviewController::class, 'confirm'])->name('review_confirm');
-
-// Route::get('my_reservation/{id}', [ReservationController::class, 'reservation_qr'])->name('reservation_qr');
 
 Route::post('/charge', [ChargeController::class, 'charge']);
 
