@@ -25,11 +25,11 @@ class ShopController extends Controller
 
     public function detail(Request $request)
     {
-        $restaurants = Restaurant::with('prefecture', 'genre')->whereId($request->shop_id)->first();
+        $restaurant = Restaurant::with('prefecture', 'genre')->whereId($request->shop_id)->first();
 
         $current = CarbonImmutable::today()->format('Y-m-d');
 
-        return view('detail', compact('restaurants', 'current'));
+        return view('detail', compact('restaurant', 'current'));
     }
 
     public function search(Request $request)
