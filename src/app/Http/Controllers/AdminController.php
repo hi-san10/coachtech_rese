@@ -107,7 +107,8 @@ class AdminController extends Controller
 
         $restaurant = Restaurant::where('name', $request->shop_name)->first();
         $restaurant_id = $restaurant->id;
-        RestaurantOwner::where('name', $request->shop_name.'代表者')->update(['restaurant_id' => $restaurant_id]);
+        RestaurantOwner::where('id', Auth::guard('restaurant_owners')->id())
+            ->update(['restaurant_id' => $restaurant_id]);
 
         $file_extension = $request->file('shop_image')->getClientOriginalExtension();
         $file = $request->file('shop_image');
@@ -117,7 +118,8 @@ class AdminController extends Controller
         {
             $request->file('shop_image')->storeAs('public/restaurant_images', 'restaurant_'.$restaurant_id.'.'.$file_extension);
             $restaurant->update(['storage_image' => 'storage/restaurant_images/restaurant_'.$restaurant_id.'.'.$file_extension]);
-        }else{
+        }
+        else{
             $upload_file = Storage::disk('s3')->putFileAs($dir, $file, 'restaurant_'.$restaurant_id.'.'.$file_extension);
             $restaurant->update(['storage_image' => $upload_file]);
         }

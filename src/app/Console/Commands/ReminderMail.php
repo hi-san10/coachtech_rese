@@ -42,7 +42,7 @@ class ReminderMail extends Command
      */
     public function handle()
     {
-        \Log::info('k');
+        // \Log::info('k');
 
         $current = CarbonImmutable::today();
         $reservations = Reservation::with('user', 'restaurant')->whereDate('date', $current)->get();
