@@ -13,17 +13,17 @@
                 <h2 id="shop_name">{{ $restaurant->name }}</h2>
             </div>
             @if(config('app.env') == 'local')
-                @if(is_null($restaurant->image))
-                <img class="storage_image" src="{{ asset($restaurant->storage_image) }}" alt="">
-                @else
-                <img class="image" src="{{ $restaurant->image }}" alt="">
-                @endif
+            @if(is_null($restaurant->image))
+            <img class="storage_image shop__img" src="{{ asset($restaurant->storage_image) }}" alt="">
             @else
-                @if(is_null($restaurant->image))
-                <img class="storage_image" src="{{ Storage::disk('s3')->url($restaurant->storage_image) }}" alt="">
-                @else
-                <img class="image" src="{{ $restaurant->image }}" alt="">
-                @endif
+            <img class="image shop__img" src="{{ $restaurant->image }}" alt="">
+            @endif
+            @else
+            @if(is_null($restaurant->image))
+            <img class="storage_image shop__img" src="{{ Storage::disk('s3')->url($restaurant->storage_image) }}" alt="">
+            @else
+            <img class="image shop__img" src="{{ $restaurant->image }}" alt="">
+            @endif
             @endif
             <div class="inner__pre-genre">
                 <small>#{{ $restaurant->prefecture->name_jp }}</small>
