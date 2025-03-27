@@ -10,7 +10,7 @@
         <div class="rese-detail__content-inner">
             <div class="inner__shop-name">
                 <a href="{{ route('shop_all') }}">&lt;</a>
-                <h2 id="shop_name">{{ $restaurants->name }}</h2>
+                <h2 id="shop_name">{{ $restaurant->name }}</h2>
             </div>
             @if(config('app.env') == 'local')
                 @if(is_null($restaurant->image))
@@ -26,17 +26,17 @@
                 @endif
             @endif
             <div class="inner__pre-genre">
-                <small>#{{ $restaurants->prefecture->name_jp }}</small>
-                <small>#{{ $restaurants->genre->name }}</small>
+                <small>#{{ $restaurant->prefecture->name_jp }}</small>
+                <small>#{{ $restaurant->genre->name }}</small>
             </div>
-            <p>{{ $restaurants->detail }}</p>
+            <p>{{ $restaurant->detail }}</p>
         </div>
 
         <div class="rese-detail__reservation">
             <div class="reservation__text">
                 <h2>予約</h2>
             </div>
-            <form id="reservation" action="{{ route('reservation',['user_id' => Auth::id(), 'shop_id' => $restaurants->id]) }}" method="post">
+            <form id="reservation" action="{{ route('reservation',['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
                 @csrf
                 <div class="rese-detail__reservation-form">
                     <div class="form__inner date">
