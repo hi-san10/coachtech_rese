@@ -15,7 +15,6 @@ use App\Models\Restaurant;
 use App\Models\RestaurantOwner;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminRequest;
 

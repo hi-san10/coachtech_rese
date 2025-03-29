@@ -14,9 +14,15 @@ class ChargeController extends Controller
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
-            $customer = Customer::create(array('email' => $request->stripeEmail, 'source' => $request->stripeToken));
+            $customer = Customer::create(array(
+                'email' => $request->stripeEmail,
+                'source' => $request->stripeToken
+            ));
 
-            $charge = Charge::create(array('customer' => $customer->id, 'amount' => 1000, 'currency' => 'jpy'));
+            $charge = Charge::create(array(
+                'customer' => $customer->id,
+                'amount' => 1000, 'currency' => 'jpy'
+            ));
 
             return back();
         } catch (\Exception $ex) {
