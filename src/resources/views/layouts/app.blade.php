@@ -16,12 +16,12 @@
             @if(Auth::check() || Auth::guard('admins')->check() || Auth::guard('restaurant_owners')->check())
             <div class="header__inner">
                 <a href="#menu1" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
-                <h3 class="title" id="title">Rese</h3>
+                <h1 class="title" id="title">Rese</h1>
             </div>
             @else
             <div class="header__inner">
                 <a href="#menu2" class="fa-solid fa-square-poll-horizontal fa-2xl menu-btn" style="color: #005af5;"></a>
-                <h3 class="title" id="title">Rese</h3>
+                <h1 class="title" id="title">Rese</h1>
             </div>
             @endif
             <div class="header__inner-menu" id="menu1">

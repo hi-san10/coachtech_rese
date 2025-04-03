@@ -6,7 +6,7 @@
 
 @section('link')
 <div class="header__inner-search">
-    <form action="/search" method="get">
+    <form class="search__form" action="/search" method="get">
         <select class="search__title" name="prefecture_id" id="">
 
             <option value="">All area　▽                    <i class="fa-solid fa-caret-up fa-rotate-180 fa-sm" style="color: #cacfd8;"></i>
@@ -23,7 +23,7 @@
             <option value="4">イタリアン</option>
             <option value="5">ラーメン</option>
         </select>
-        <input type="search" name="name" placeholder="🔍　Search...">
+        <input class="search__word" type="search" name="name" placeholder="🔍　Search...">
     </form>
 </div>
 @endsection

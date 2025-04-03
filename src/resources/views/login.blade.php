@@ -14,18 +14,18 @@
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email">
             </div>
-            <div class="error_message">
+            <div class="error__message">
                 @error('email')
-                <span>{{ $message }}</span>
+                <span class="error_text">{{ $message }}</span>
                 @enderror
             </div>
             <div class="login-item">
                 <i class="fa-solid fa-lock"></i>
                 <input type="password" name="password" placeholder="Password">
             </div>
-            <div class="error_message">
+            <div class="error__message">
                 @error('password')
-                <span>{{ $message }}</span>
+                <span class="error_text">{{ $message }}</span>
                 @enderror
             </div>
             <div class="login-item__button">
