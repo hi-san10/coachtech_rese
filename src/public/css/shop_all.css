@@ -148,6 +148,7 @@
     .header__inner-search {
         width: auto;
         height: auto;
+        top: 10%;
     }
 
     .search__form {
