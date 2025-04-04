@@ -24,8 +24,6 @@ body {
 }
 
 .rese-content {
-    /* height: 90vh; */
-    /* position: relative; */
     display: flex;
     justify-content: center;
 }
@@ -33,19 +31,11 @@ body {
 .login,
 .register {
     width: 30%;
-    /* position: absolute;
-    top: 20%;
-    left: 35%; */
     margin-top: 100px;
     box-shadow: 1px 1px 5px gray;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-}
-
-.login__text,
-.register__text {
-    /* height: 20%; */
 }
 
 .login__text-item,
@@ -67,7 +57,6 @@ body {
 }
 
 .register-item {
-    /* height: 26%; */
     display: flex;
     align-items: center;
     margin-top: 10px;
@@ -77,20 +66,16 @@ body {
     display: flex;
     justify-content: center;
     color: red;
-    /* margin-left: 38px; */
 }
 
 .login__button,
 .register__button {
     background-color: blue;
     color: white;
-    /* height: 20%; */
     border-radius: 5px;
     width: 80px;
     display: block;
     margin: 5px auto;
-    /* margin-right: 10%;
-    margin-bottom: 10px; */
 }
 
 .login__button-item,
@@ -101,7 +86,6 @@ body {
 
 .login__form,
 .register__form {
-    /* height: 80%; */
     display: flex;
     flex-direction: column;
     background-color: white;
