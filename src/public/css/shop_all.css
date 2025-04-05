@@ -1,3 +1,10 @@
+input,
+button,
+select,
+textarea {
+    -webkit-appearance: none;
+}
+
 .rese-shop {
     width: 100%;
 }
