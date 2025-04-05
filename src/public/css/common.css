@@ -1,10 +1,3 @@
-input,
-button,
-select,
-textarea {
-    -webkit-appearance: none;
-}
-
 body {
     background-color: #f4f4f4;
 }
@@ -21,6 +14,7 @@ body {
     display: flex;
     position: relative;
     height: 10vh;
+    margin-bottom: 3vh;
 }
 
 .header__inner {
