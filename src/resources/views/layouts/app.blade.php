@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rese</title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/ress@4.0.0/dist/ress.min.css">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script src="https://kit.fontawesome.com/9c882e03ff.js" crossorigin="anonymous"></script>
     @yield('css')
     <script src="{{ asset('js/script.js') }}" defer></script>
 </head>
+
 <body>
     <div class="rese">
         <header class="header">
@@ -36,8 +38,8 @@
                     <a href="/restaurant_owner" class="menu__content-link">RestaurantOwnerHome</a>
                     @endif
                     <form action="/logout" method="post">
-                    @csrf
-                    <p class="menu__content-btn"><button>Logout</button></p>
+                        @csrf
+                        <p class="menu__content-btn"><button>Logout</button></p>
                     </form>
                 </div>
             </div>
@@ -54,4 +56,5 @@
         @yield('content')
     </div>
 </body>
+
 </html>
