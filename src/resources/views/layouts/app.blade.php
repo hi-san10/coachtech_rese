@@ -35,7 +35,7 @@
                     @elseif(Auth::guard('admins')->check())
                     <a href="/admin" class="menu__content-link">AdminHome</a>
                     @elseif(Auth::guard('restaurant_owners'))
-                    <a href="/restaurant_owner" class="menu__content-link">RestaurantOwnerHome</a>
+                    <a href="/restaurant_owner" class="menu__content-link">Restaurant<br>Owner<br>Home</a>
                     @endif
                     <form action="/logout" method="post">
                         @csrf
