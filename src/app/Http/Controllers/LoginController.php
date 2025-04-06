@@ -115,7 +115,7 @@ class LoginController extends Controller
                 {
                     return redirect('/login');
                 }elseif(Auth::guard('restaurant_owners')->attempt($credentials)){
-                    $request->session()->regenerate();
+                $request->session()->regenerate();
                     return redirect('/restaurant_owner');
                 }
             }else{

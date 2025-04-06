@@ -115,6 +115,7 @@ body {
 }
 
 .menu__content {
+    width: 5%;
     position: absolute;
     top: 25%;
     left: 42%;
@@ -212,6 +213,7 @@ body {
 
     .menu__content {
         margin-top: 15vh;
+        width: auto;
         top: auto;
         left: auto;
     }
