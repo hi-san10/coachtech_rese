@@ -7,6 +7,7 @@
 @section('content')
 <div class="rese-detail">
     <div class="rese-detail__content">
+        <!-- ショップ概要 -->
         <div class="rese-detail__content-inner">
             <div class="inner__shop-name">
                 <a href="{{ route('shop_all') }}">&lt;</a>
@@ -31,12 +32,12 @@
             </div>
             <p>{{ $restaurant->detail }}</p>
         </div>
-
+        <!-- 予約画面 -->
         <div class="rese-detail__reservation">
             <div class="reservation__text">
-                <h2>予約</h2>
+                <h2 class="reservation__title">予約</h2>
             </div>
-            <form id="reservation" action="{{ route('reservation',['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
+            <form class="reservation" id="reservation" action="{{ route('reservation',['user_id' => Auth::id(), 'shop_id' => $restaurant->id]) }}" method="post">
                 @csrf
                 <div class="rese-detail__reservation-form">
                     <div class="form__inner date">
