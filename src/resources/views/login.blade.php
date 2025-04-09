@@ -6,6 +6,11 @@
 
 @section('content')
 <div class="rese-content">
+    @if(session('message'))
+    <div class="error__message">
+        <p class="error_text session_text">{{ session('message') }}</p>
+    </div>
+    @endif
     <div class="login">
         <p class="login__text"><span class="login__text-item">Login</span></p>
         <form class="login__form" action="/login/login" method="post">

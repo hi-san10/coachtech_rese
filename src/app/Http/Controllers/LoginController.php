@@ -77,49 +77,50 @@ class LoginController extends Controller
         public function login(LoginRequest $request)
         {
             $email = $request->email;
+            $password = $request->password;
+
             $user = User::with('admin')->where('email', $email)->first();
             $admin = AdminUser::where('email', $email)->first();
             $restaurant_owner = RestaurantOwner::where('email', $email)->first();
 
+            if (is_null($user) && is_null($admin) && is_null($restaurant_owner)) {
+                return back()->with('message', '会員情報がありません');
+            };
+
             $credentials = ([
                 'email' => $email,
-                'password' => $request->password
+                'password' => $password
             ]);
 
-            if($user)
-            {
-                $email_verified_at = $user->email_verified_at;
-
-                if(is_null($email_verified_at))
+            if ($user) {
+                if (Hash::check($password, $user->password) && !is_null($user->email_verified_at))
                 {
-                    return redirect('/login');
-                }else{
                     Auth::attempt($credentials);
                     $request->session()->regenerate();
+
                     return redirect('/');
                 }
-            }elseif($admin){
-                $email_verified_at = $admin->email_verified_at;
-
-                if(is_null($email_verified_at))
+                    return back()->with('message', 'パスワードが違うかメール認証がお済みではありません');
+            } elseif ($admin) {
+                if (Hash::check($password, $admin->password) && !is_null($admin->email_verified_at))
                 {
-                    return redirect('/login');
-                }elseif(Auth::guard('admins')->attempt($credentials)){
-                $request->session()->regenerate();
-                return redirect('/admin');
-                }
-            }elseif($restaurant_owner){
-                $email_verified_at = $restaurant_owner->email_verified_at;
+                    Auth::guard('admins')->attempt($credentials);
+                    $request->session()->regenerate();
 
-                if(is_null($email_verified_at))
-                {
-                    return redirect('/login');
-                }elseif(Auth::guard('restaurant_owners')->attempt($credentials)){
-                $request->session()->regenerate();
-                    return redirect('/restaurant_owner');
+                    return redirect('/admin');
                 }
-            }else{
-                return redirect('/login');
+                    return back()->with('message', 'パスワードが違うかメール認証がお済みではありません');
+            } elseif ($restaurant_owner) {
+                if (Hash::check($password, $restaurant_owner->password) && !is_null($restaurant_owner->email_verified_at))
+                {
+                    Auth::guard('restaurant_owners')->attempt($credentials);
+                    $request->session()->regenerate();
+
+                    return redirect('restaurant_owner');
+                }
+                    return back()->with('message', 'パスワードが違うかメール認証がお済みではありません');
+            } else {
+                return back();
             }
         }
 
