@@ -8,9 +8,9 @@
 <div class="thanks">
     <div class="thanks-content">
         <div class="thanks_content--text">
-            <p>会員登録ありがとうございます</p>
+            <p class="thanks-message">会員登録<br class="br">ありがとうございます</p>
             <div class="thanks-content__link">
-                <a href="/login"><span>ログインする</span></a>
+                <a class="login-link" href="/login">ログインする</a>
             </div>
         </div>
     </div>

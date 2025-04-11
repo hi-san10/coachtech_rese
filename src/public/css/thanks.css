@@ -1,5 +1,9 @@
+html {
+    font-size: 100%;
+}
+
 .thanks {
-    height: 90vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
 }
@@ -7,36 +11,75 @@
 .thanks-content {
     background-color: white;
     width: 30%;
-    height: 40%;
+    height: 50%;
     border-radius: 5px;
     box-shadow: 1px 1px 5px gray;
     text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.thanks-content p {
-    font-size: 22px;
-    margin-bottom: 30px;
+.thanks_content--text {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.thanks-message {
+    margin-top: 5%;
+}
+
+.br {
+    display: none;
 }
 
 .thanks-content__link {
-    height: 10%;
     display: flex;
     justify-content: center;
-}
-
-.thanks-content__link a {
+    width: 40%;
+    height: 15%;
+    margin: auto;
+    align-items: center;
     background-color: blue;
     border-radius: 5px;
-    text-decoration: none;
-    display: block;
-    width: 30%;
 }
 
-.thanks-content__link span {
+.login-link {
     color: white;
-    font-size: 12px;
+    font-size: 80%;
+    text-decoration: none;
+}
+
+.link__name {
+    color: white;
+    vertical-align: middle;
     line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .thanks-content__link {
+        width: 50%;
+    }
+
+    .login-link {
+        font-size: 10%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .thanks-content {
+        width: 50%;
+    }
+
+    .thanks-message {
+        font-size: large;
+    }
+
+    .br {
+        display: block;
+    }
 }
