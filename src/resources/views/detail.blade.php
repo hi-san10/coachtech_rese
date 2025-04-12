@@ -42,7 +42,7 @@
                 <div class="rese-detail__reservation-form">
                     <div class="form__inner date">
                         <label for="rese_date">
-                            <input id="rese_date" type="date" name="date" min="{{ $current }}" onchange="dateChange()"></label>
+                            <input id="rese_date" type="date" name="date" min="{{ $current }}" onchange="dateChange()" placeholder="カレンダー"></label>
                     </div>
                     <div class="error__message">
                         @error('date')

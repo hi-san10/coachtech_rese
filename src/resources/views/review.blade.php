@@ -37,7 +37,7 @@
             </div>
             <div class="review-content__comment">
                 <label for="textarea">[コメント]</label>
-                <textarea name="review_comment" cols="30" rows="10" id="textarea"></textarea>
+                <textarea class="comment__textarea" name="review_comment" cols="30" rows="10" id="textarea"></textarea>
             </div>
             <input type="hidden" name="reservation_id" value="{{ $reservation_id }}">
             <button class="review_btn">送信する</button>
