@@ -35,11 +35,11 @@
             </div>
             <div class="content__inner">
                 <label for="shop_image">店舗画像</label>
-                <input type="file" id="shop_image" name="shop_image" accept="image/*">
+                <input class="form__inner image" type="file" id="shop_image" name="shop_image" accept="image/*">
             </div>
             <div class="content__inner detail">
                 <label for="detail">店舗概要</label>
-                <textarea name="detail" id="detail" cols="50" rows="10"></textarea>
+                <textarea class="form__inner" name="detail" id="detail" cols="50" rows="10"></textarea>
             </div>
             <button class="form_btn">作成</button>
         </form>

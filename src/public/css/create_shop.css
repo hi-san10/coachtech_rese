@@ -4,7 +4,7 @@
 }
 
 .create-shop__content {
-    width: 80%;
+    width: 60%;
     background-color: blue;
     display: flex;
     justify-content: center;
@@ -13,7 +13,6 @@
 }
 
 .create-shop__form {
-    width: 60%;
     display: flex;
     flex-direction: column;
 }
@@ -22,6 +21,7 @@
     color: white;
     margin: 15px 0;
     display: flex;
+    padding-left: 5%;
 }
 
 label {
@@ -51,4 +51,26 @@ textarea {
 
 .form_btn {
     color: white;
+    margin-bottom: 5%;
+}
+
+.form__inner {
+    width: 70%;
+}
+
+@media screen and (max-width: 480px) {
+
+    .create-shop__content {
+        width: 90%;
+    }
+
+    label {
+        margin-right: 5%;
+        font-size: small;
+    }
+
+    .image {
+        font-size: x-small;
+    }
+
 }
