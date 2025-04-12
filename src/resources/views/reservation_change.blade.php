@@ -8,7 +8,7 @@
 <div class="rese-change_reservation">
     <div class="rese-detail__reservation">
         <div class="reservation__text">
-            <h2>予約</h2>
+            <h1 class="reservation__title">予約</h1>
         </div>
         <form id="reservation" action="{{ route('update', ['id' => $my_datas->id]) }}" method="post">
             @method('patch')
