@@ -34,7 +34,7 @@
 
 .confirm__item {
     background-color: blue;
-    height: 20%;
+    /* height: 20%; */
     box-shadow: 1px 1px 5px gray;
     border-radius: 5px;
     margin: 0 0 20px 0;

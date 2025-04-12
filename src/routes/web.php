@@ -19,9 +19,6 @@ use App\Http\Controllers\ChargeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/thanks', function(){
-    return view('done');
-});
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
