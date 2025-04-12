@@ -26,7 +26,7 @@
         </div>
         <div class="review-content__comment">
             <label for="textarea">[コメント]</label>
-            <textarea name="review_comment" cols="30" rows="10" id="textarea" readonly>{{ $review->comment }}</textarea>
+            <textarea class="comment__textarea" name="review_comment" cols="30" rows="10" id="textarea" readonly>{{ $review->comment }}</textarea>
         </div>
     </div>
 </div>
