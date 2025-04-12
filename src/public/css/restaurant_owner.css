@@ -1,5 +1,4 @@
 .rese-restaurant_owner {
-    height: 60vh;
     display: flex;
     justify-content: center;
 }
@@ -11,8 +10,8 @@
     align-items: center;
     width: 40%;
     background-color: blue;
-    border-radius: 5px 5px 0 0;
-    margin-top: 100px;
+    border-radius: 5px;
+    margin-top: 10%;
 }
 
 .link {
@@ -26,4 +25,11 @@
 .create_restaurant-message p {
     color: red;
     font-size: 20px;
+}
+
+@media screen and (max-width: 480px) {
+
+    .restaurant_owner__content {
+        width: 80%;
+    }
 }
