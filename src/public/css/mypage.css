@@ -4,13 +4,19 @@
 }
 
 .user-name {
-    margin-left: 570px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
 .mypage__text {
-    display: inline-block;
-    margin: 35px 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: xx-large;
+}
+
+.status {
+    margin: 5% auto;
 }
 
 .rese-mypage__content h2:nth-of-type(3) {
@@ -28,11 +34,10 @@
 
 .confirm__item {
     background-color: blue;
-    height: 270px;
+    height: 20%;
     box-shadow: 1px 1px 5px gray;
     border-radius: 5px;
     margin: 0 0 20px 0;
-    position: relative;
 }
 
 .confirm__item img {
@@ -46,7 +51,7 @@
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    height: 80px;
+    padding-top: 10%;
 }
 
 .change__btn {
@@ -97,7 +102,6 @@ table tr:not(:last-child) {
 .qr_code {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
 }
 
 .review_btn {
@@ -107,20 +111,25 @@ table tr:not(:last-child) {
 
 .rese-shop__item {
     width: 35%;
-    height: 300px;
     margin: 0 50px 30px 0;
     border-radius: 5px;
     box-shadow: 1px 1px 5px gray;
+    background-color: white;
 }
 
 .shop__item-text {
-    padding-top: 25px;
+    margin-top: 5%;
     padding-left: 10px;
+}
+
+.shop_name {
+    margin-bottom: 5%;
 }
 
 .rese-shop__item-detail {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5%;
 }
 
 .rese-shop__item-img {
@@ -138,7 +147,6 @@ table tr:not(:last-child) {
 }
 
 .rese-shop__item-text {
-    background-color: white;
     height: 50%;
     border-radius: 0 0 5px 5px;
 }
@@ -183,4 +191,40 @@ table tr:not(:last-child) {
 
 td:last-of-type {
     display: flex;
+}
+
+@media screen and (max-width: 768px) {
+
+    .rese-mypage__content {
+        width: 95%;
+    }
+
+    .rese-mypage__content-confirm {
+        justify-content: space-around;
+    }
+
+    .confirm__inner {
+        width: 50%;
+    }
+
+    .my-favorite-shop {
+        width: 40%;
+    }
+
+    .rese-shop__item {
+        width: 95%;
+        margin: auto auto 10% auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .rese-mypage__content-confirm {
+        display: block;
+    }
+
+    .confirm__inner, .my-favorite-shop {
+        width: 80%;
+        margin: auto;
+    }
 }
