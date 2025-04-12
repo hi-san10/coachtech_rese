@@ -9,7 +9,6 @@
 .review-content {
     background-color: blue;
     width: 40%;
-    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,6 +33,7 @@
 
 .review_point {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 2%;
 }
@@ -69,6 +69,14 @@
 
     .review-content {
         width: auto;
+    }
+
+    .review_point {
+        flex-direction: column;
+    }
+
+    .review_item {
+        padding-left: 30%;
     }
 
 }
