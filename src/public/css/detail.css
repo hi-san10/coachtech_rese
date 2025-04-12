@@ -84,6 +84,16 @@
     line-height: 30px;
 }
 
+label {
+    display: inline-block;
+    width: 100%;
+}
+
+#rese_date {
+    display: inline-block;
+    width: 100%;
+}
+
 .form__inner select {
     width: 100%;
 }

@@ -41,7 +41,7 @@
                 @csrf
                 <div class="rese-detail__reservation-form">
                     <div class="form__inner date">
-                        <label for="date">
+                        <label for="rese_date">
                             <input id="rese_date" type="date" name="date" min="{{ $current }}" onchange="dateChange()"></label>
                     </div>
                     <div class="error__message">
