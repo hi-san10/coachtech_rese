@@ -1,12 +1,5 @@
-.rese-create_notice_mail {
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
 .rese-create_notice_mail__content {
-    width: 50%;
+    width: 40%;
     margin: auto;
     background-color: blue;
     border-radius: 5px;
@@ -49,5 +42,12 @@ button {
     text-decoration: none;
     display: block;
     margin: auto;
+}
+
+@media screen and (max-width: 480px) {
+
+    .rese-create_notice_mail__content {
+        width: 90%;
+    }
 }
 
