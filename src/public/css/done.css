@@ -1,13 +1,12 @@
 .done {
-    height: 90vh;
     display: flex;
     justify-content: center;
 }
 
 .done-content {
+    margin-top: 5%;
     background-color: white;
-    width: 30%;
-    height: 40%;
+    aspect-ratio: 1/1;
     border-radius: 5px;
     box-shadow: 1px 1px 5px gray;
     text-align: center;
@@ -16,8 +15,8 @@
     align-items: center;
     }
 
-.done-content p {
-    font-size: 22px;
+.thanks_message {
+    font-size: large;
     margin-bottom: 30px;
 }
 

@@ -20,7 +20,7 @@ use App\Http\Controllers\ChargeController;
 |
 */
 Route::get('/thanks', function(){
-    return view('thanks');
+    return view('done');
 });
 Route::group(['middleware' => 'auth'], function()
 {
