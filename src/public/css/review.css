@@ -64,3 +64,11 @@
     display: block;
     margin: 5% auto 0 auto;
 }
+
+@media screen and (max-width: 480px) {
+
+    .review-content {
+        width: auto;
+    }
+
+}
