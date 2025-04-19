@@ -55,8 +55,9 @@ class AdminController extends Controller
         return redirect('admin');
     }
 
-    public function restaurant_owner()
+    public function restaurant_owner(Request $request)
     {
+        // dd($request->session()->all());
         return view('restaurant_owner');
     }
 
@@ -73,7 +74,7 @@ class AdminController extends Controller
         }
     }
 
-    public function edit_shop_top()
+    public function edit_shop_top(Request $request)
     {
         $restaurant_owner = RestaurantOwner::whereId(Auth::guard('restaurant_owners')->id())->first();
         if(is_null($restaurant_owner->restaurant_id))
@@ -82,6 +83,7 @@ class AdminController extends Controller
         }else
         {
         $restaurant = Restaurant::with('prefecture', 'genre')->whereId($restaurant_owner->restaurant_id)->first();
+        dd($request->session('laravel_session'));
 
         return view('edit_shop', compact('restaurant'));
         }
@@ -150,13 +152,11 @@ class AdminController extends Controller
         return redirect('/restaurant_owner');
     }
 
-    public function passwordChange_mail()
+    public function passwordChange_mail(Request $request)
     {
         $restaurant_owner = RestaurantOwner::find(Auth::guard('restaurant_owners')->id());
-        $restaurant_owner_id = $restaurant_owner->id;
-        $email = $restaurant_owner->email;
 
-        Mail::to($email)->send(new PasswordChangeMail($restaurant_owner_id));
+        Mail::to($restaurant_owner->email)->send(new PasswordChangeMail($restaurant_owner));
 
         return view('sent_mail');
     }
@@ -164,7 +164,15 @@ class AdminController extends Controller
     public function change_password(Request $request)
     {
         $restaurant_owner = RestaurantOwner::find($request->id);
+
+        return view('password_change', compact('restaurant_owner'));
+    }
+
+    public function password_change(Request $request)
+    {
+        $restaurant_owner = RestaurantOwner::find($request->id);
         $restaurant_owner->update(['password' => Hash::make($request->new_password)]);
+
         return redirect('restaurant_owner');
     }
 }

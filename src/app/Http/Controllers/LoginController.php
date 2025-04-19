@@ -82,6 +82,7 @@ class LoginController extends Controller
             $user = User::with('admin')->where('email', $email)->first();
             $admin = AdminUser::where('email', $email)->first();
             $restaurant_owner = RestaurantOwner::where('email', $email)->first();
+            // dd(Hash::check($request->password, $restaurant_owner->password));
 
             if (is_null($user) && is_null($admin) && is_null($restaurant_owner)) {
                 return back()->with('message', '会員情報がありません');

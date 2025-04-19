@@ -97,6 +97,8 @@ Route::group(['prefix' => '/restaurant_owner'], function()
 
     Route::get('/passwordChange_mail', [AdminController::class, 'passwordChange_mail']);
 
-    Route::get('/change_password/{id}', [AdminController::class, 'change_password'])->name('change_password');
+    Route::get('/change_password/{id}/', [AdminController::class, 'change_password'])->name('change_password');
+
+    Route::patch('password_change/{id}/{email?}', [AdminController::class, 'password_change'])->name('password_change');
 });
 

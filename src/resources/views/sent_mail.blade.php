@@ -7,7 +7,7 @@
 @section('content')
 <div class="rese-sent_mail">
     <div class="sent_mail__content">
-        <p>メールアドレスにパスワード変更用のメールを送りました。</p>
+        <p>メールアドレスに本人確認用のメールを送りました。</p>
     </div>
 </div>
 @endsection

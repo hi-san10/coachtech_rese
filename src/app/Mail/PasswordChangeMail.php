@@ -15,9 +15,9 @@ class PasswordChangeMail extends Mailable
      *
      * @return void
      */
-    public function __construct($restaurant_owner_id)
+    public function __construct($restaurant_owner)
     {
-        $this->restaurant_owner_id = $restaurant_owner_id;
+        $this->restaurant_owner = $restaurant_owner;
     }
 
     /**
@@ -27,6 +27,6 @@ class PasswordChangeMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.passwordChange_mail')->from('mail@rese')->subject('メールアドレス変更')->with('restaurant_owner_id', $this->restaurant_owner_id);
+        return $this->view('mail.passwordChange_mail')->from('mail@rese')->subject('メールアドレス変更')->with('restaurant_owner', $this->restaurant_owner);
     }
 }
